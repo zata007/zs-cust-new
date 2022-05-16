@@ -1,0 +1,13 @@
+.bill-detail-container{
+  .title{
+    margin: 10px 0 20px 0;
+  }
+  .bill-split{
+    .rate{
+      color:#FF7043;
+    }
+    &:last-child{
+      margin: 10px 0px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div fxLayout="column" fxLayoutAlign="start" class="pitstop-landing-container">
+  <ng-container *ngIf="foods && foods.length; else noData">
+    <div class="food-item-container" *ngFor="let item of foods">
+      <div fxLayout="row" fxLayoutAlign="flex-start center" class="food-item"
+        [ngClass]="{ added: isAddedToCart(item) }">
+        <img class="thumb mat-elevation-z4" src="{{ item.skuImages[0] ? item.skuImages[0]['thumbnail'] : '../../../assets/img/core/thumb.jpg'}}" alt="" />
+        <div fxLayout="column" fxLayoutAlign="center start" class="details mat-elevation-z4">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div class="head4 food-name">
+              {{item.skuName}}
+              <img *ngIf="item.type==='v'; else nonVeg" src="../../../assets/icons/veg.png" alt="">
+              <ng-template #nonVeg><img src="../../../assets/icons/non-veg.png" alt=""></ng-template>
+            </div>
+          </div>
+          <div class="restaurant para">{{item.skuCuisine}}</div>
+          <div class="restaurant rate" fxLayout="row" fxLayoutAlign="flex-start center">
+            <img src="../../../assets/icons/star.svg" alt="">
+            <p>{{item.skuRating}}</p>
+          </div>
+          <div class="description para">{{item.skuDesc}}</div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <div class="price head4">₹{{ item.totalPrice }}</div>
+            <div fxLayout="row" fxLayoutAlign="space-between baseline" class="order-action">
+              <div (click)="removeFromCart(item)">-</div>
+              <div class="counter">{{countInCart(item)}}</div>
+              <div (click)="addToCart(item)">+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="thats-all" fxLayout="row" fxLayoutAlign="center">
+      <div class="head4">That's all, Folks!</div>
+    </div>
+  </ng-container>
+
+  <ng-template #noData>
+    <div class="no-data">
+      <div class="head3">No Results</div>
+    </div>
+  </ng-template>
+</div>

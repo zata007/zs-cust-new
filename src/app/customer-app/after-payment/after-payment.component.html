@@ -1,0 +1,84 @@
+<div class="after-payment-container" fxLayout="column">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="flex-start">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+    <!-- <div fxLayoutAlign="center">{{ mapForHeader[selectedService]}}</div> -->
+  </mat-toolbar>
+
+  <div *ngIf="fromLocation" class="map-area" fxFlex="1 1 100%" #mapContainer>
+    <agm-map
+      [latitude]="fromLocation.lat"
+      [longitude]="fromLocation.lng"
+      [scrollwheel]="true"
+      [zoomControl]="false"
+      [streetViewControl]="false"
+      (mapReady)="mapReady($event)"
+      [zoom]="12"
+      [clickableIcons]="false"
+      [styles]="mapStyles"
+    >
+      <ng-container *ngIf="polylines.length">
+        <agm-polyline
+          *ngFor="let polyline of polylines; let i = index"
+          [zIndex]="polyline.zIndex"
+          [strokeColor]="polyline.color"
+        >
+          <agm-polyline-point
+            *ngFor="let point of polyline.path"
+            [latitude]="point.lat"
+            [longitude]="point.lng"
+          >
+          </agm-polyline-point>
+        </agm-polyline>
+      </ng-container>
+      <agm-marker
+        *ngIf="fromLocation.lat"
+        [latitude]="fromLocation.lat"
+        [longitude]="fromLocation.lng"
+        [markerDraggable]="false"
+        [iconUrl]="'assets/icons/pin-start.svg'"
+        [animation]="'DROP'"
+
+      >
+      </agm-marker>
+      <agm-marker
+        *ngIf="toLocation.lat"
+        [latitude]="toLocation.lat"
+        [longitude]="toLocation.lng"
+        [markerDraggable]="false"
+        [iconUrl]="'assets/icons/pin-end.svg'"
+        [animation]="'DROP'"
+      >
+      </agm-marker>
+    </agm-map>
+  </div>
+
+
+  <div [ngSwitch]="selectedService">
+  <div class="message" *ngSwitchCase="ECustomerServiceType.TakeAway">
+    <div class="para">Proceed to the Zataakse Pitstop to receive your order</div>
+    <div class="head3">{{pitstopData.pitstopData.pitstop}}</div>
+    <div class="caption">{{pitstopData.pitstopData.landmark}}</div>
+    <div fxLayout="row" fxLayoutAlign="flex-end">
+      <button mat-raised-button color="primary" (click)="navigateToPitstop()">NAVIGATE</button>
+    </div>
+  </div>
+  <div  class="message" *ngSwitchCase="ECustomerServiceType.Delivery">
+    <div class="para">Your order will be delivered to following address:</div>
+    <div class="head4">{{deliveryData.address}}</div>
+    <div fxLayout="row" fxLayoutAlign="flex-end">
+      <button mat-fab color="primary">{{counterString}}</button>
+    </div>
+
+  </div>
+  <div  class="message" *ngSwitchCase="ECustomerServiceType.OrderAhead">
+    <div class="para">Please enjoy your food to</div>
+    <div class="head3">{{name}} at your provided time</div>
+    <!-- <div class="caption">{{pitstopData.time}}</div> -->
+    <div fxLayout="row" fxLayoutAlign="flex-end">
+      <button mat-raised-button color="primary" (click)="navigateToCustomer()">Okay</button>
+    </div>
+  </div>
+</div>
+</div>

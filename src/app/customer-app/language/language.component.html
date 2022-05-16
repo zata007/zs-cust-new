@@ -1,0 +1,15 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="flex-start center">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="language-change-container" [formGroup]="profileForm">
+    <label id="Lang" color="primary">{{'LANGUAGE.LAN_PREF'|translate}}</label>
+    <mat-radio-group aria-labelledby="Lang" fxLayout="column" fxLayoutAlign="flex-start" formControlName='language' (change)="language()">
+        <mat-radio-button color="accent" value="en">{{'LANGUAGE.ENGLISH'|translate}}</mat-radio-button>
+        <mat-radio-button color="accent" value="hi">{{'LANGUAGE.HINDI'|translate}}</mat-radio-button>
+        <mat-radio-button color="accent" value="bn">{{'LANGUAGE.BENGALI'|translate}}</mat-radio-button>
+        <mat-radio-button color="accent" value="mr">{{'LANGUAGE.MARATHI'|translate}}</mat-radio-button>
+        <!-- <mat-radio-button color="accent" value="gu">{{'LANGUAGE.GUJRATI'|translate}}</mat-radio-button> -->
+    </mat-radio-group>
+</div>

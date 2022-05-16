@@ -1,0 +1,11 @@
+<div class="address-list-container">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="address-item" *ngFor="let addressItem of data">
+        <div fxLayout="column" fxLayoutAlign="start" class="address">
+            <div class="head3 bold">{{addressItem.addrType}}</div>
+            <div class="head4">{{addressItem.addrLine1}} {{addressItem.addrLine2}} {{addressItem.locality}} {{addressItem.city}}</div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <button mat-button color="primary" (click)="onAddressSelection(addressItem)">{{'SELECT'|translate}}</button>
+        </div>
+    </div>
+</div>

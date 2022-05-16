@@ -1,0 +1,55 @@
+<div class="essentials-container">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+    <div class="head3 bold">{{"ESSENTIAL_SERVICE_TITLE" | translate}}</div>
+    <div class="junk"></div>
+  </mat-toolbar>
+
+  <div class="input-area">
+    <div class="search-element">
+      <input class="from zat-input" placeholder="Location" autocorrect="off" autocapitalize="off" spellcheck="off"
+        type="search" #searchFrom required />
+    </div>
+    <ng-template #customContent>
+      <div style="border-radius: 10px">
+        {{"PROVIDE_YOUR_LOCATION" | translate}}
+      </div>
+    </ng-template>
+    <ng-template #counter> </ng-template>
+    <ng-template #doneButton>
+      <button mat-raised-button color="primary" (click)="onOnboardingCompletion()">{{"OKAY" | translate}}</button>
+    </ng-template>
+  </div>
+  <div class="map-area">
+    <agm-map [latitude]="lat" [longitude]="lng" [scrollwheel]="true" [zoomControl]="false" [streetViewControl]="false"
+      (mapReady)="mapReady($event)" [zoom]="zoom" [clickableIcons]="false" [styles]="mapStyles">
+
+      <agm-marker *ngIf="customerStateService.selectedLocation.from.lat"
+        [latitude]="customerStateService.selectedLocation.from.lat"
+        [longitude]="customerStateService.selectedLocation.from.lng" [markerDraggable]="false"
+        [iconUrl]="'assets/icons/pin-start.svg'" [animation]="'BOUNCE'">
+      </agm-marker>
+
+      <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedEssentialMarker(m.id, infowindow)"
+        [latitude]="m.lat" [longitude]="m.lng" [markerDraggable]="m.draggable" [iconUrl]="'assets/icons/marker.gif'">
+        <agm-info-window #infowindow [disableAutoPan]="false">
+          <strong style="cursor: pointer;" (click)="clickedOnEssentialWindow(m)">{{m.name}}</strong>
+        </agm-info-window>
+      </agm-marker>
+      <agm-marker *ngFor="let m of addressMarkers; let i = index" (markerClick)="clickedMarker(m.label)"
+        [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.markerUrl">
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
+
+<!-- <div class="swiper-parent-container" fxLayout="row" fxLayoutAlign="center center">
+    <button
+        mat-raised-button
+        color="primary"
+        *ngIf="customerStateService.selectedLocation.from.lat"
+        (click)="onRecord()"
+    >Confirm Location</button>
+</div> -->

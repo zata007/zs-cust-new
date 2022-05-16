@@ -1,0 +1,26 @@
+.item-landing-container {
+  width: 100%;
+  padding: 0px 16px;
+
+  .input-area {
+    .zat-input {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .toggle-veg {
+    margin-top: 10px;
+    p {
+      font-size: 0.8em;
+      margin-right: 5px;
+    }
+  }
+}
+
+.mat-tab-label-active {
+  .mat-tab-label-content {
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+}

@@ -1,0 +1,62 @@
+.edit-profile-container {
+  padding: 60px 16px 20px;
+  height: 100%;
+  overflow-y: scroll;
+
+  mat-toolbar {
+    background: #ffffff !important;
+    box-shadow: none;
+    padding: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+  }
+
+  .profile {
+    margin: 0px 0px 30px 0px;
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+
+  .profile-detail {
+    margin: 0px;
+    border-radius: 5px;
+
+    mat-form-field {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    mat-radio-group {
+        margin-bottom: 15px;
+    }
+  }
+
+  .buttons {
+      margin-top: 20px;
+      button {
+          width: 40%;
+          border-radius: 4px;
+      }
+  }
+}
+
+.mat-radio-button~.mat-radio-button {
+  margin-left: 10px;
+}

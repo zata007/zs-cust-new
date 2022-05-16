@@ -1,0 +1,191 @@
+@import "./../../../assets/styles/mixins";
+@import "./../../../assets/styles/variable";
+.vehicle-location-container {
+  box-shadow: none;
+  padding: 0px;
+  position: relative;
+  max-height: 100vh;
+
+  agm-map {
+    height: calc(100vh - 210px);
+    z-index: 0;
+    @include pc {
+      height: calc(100vh - 230px);
+    }
+    @include tablet {
+      height: calc(100vh - 30px);
+    }
+    @include phone {
+      height: calc(100vh - 170px);
+    }
+    @include xs-phone {
+      height: calc(100vh - 160px);
+    }
+  }
+
+  .input-area {
+    position: relative;
+    z-index: 1;
+    top: 0px;
+    @include xs-phone {
+      width: 100vw;
+    }
+
+    .search-element {
+      position: relative;
+      background-color: $color-background-light;
+      padding: 10px;
+      width: inherit;
+      input {
+        position: relative;
+        width: 100%;
+        padding: 15px 0 15px 14px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.swiper-parent-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  .below-card {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 0px;
+    .title {
+      padding: 0px 0px 10px 0px;
+    }
+    .padding10 {
+      padding: 10px 0px;
+    }
+  }
+
+  .no-pitstop {
+    width: 100%;
+
+    .pitstop-container {
+      display: block;
+      background: #fff;
+      box-shadow: 2px 2px 20px 5px #acacac;
+      flex-flow: nowrap;
+      border-radius: 5px;
+      width: 360px;
+      padding: 4px 8px;
+      height: 100px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+  }
+  .confirm-btn {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.custom-popup-container {
+  .content-area {
+    padding: 5px 12px;
+
+    .action-btn {
+      box-shadow: none;
+      border-radius: 5px;
+    }
+
+    .request-content {
+      display: block;
+
+      .content {
+        text-align: initial;
+      }
+
+      .action-btn {
+        height: 32px;
+        float: right;
+      }
+    }
+
+    .submit-content {
+      line-height: 1.5em;
+      padding: 20px 0px;
+
+      .title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .sub-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .requested-location {
+        width: 100%;
+
+        span {
+          margin: 3px 0px;
+        }
+
+        div {
+          width: 100%;
+
+          span {
+            display: inline;
+
+            &:first-child {
+              flex-basis: 21%;
+              text-align: left;
+            }
+
+            &:last-child {
+              flex-basis: 71%;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+  font-size: 1.5em;
+}
+
+input[type="search"]::-moz-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+  font-size: 1.5em;
+}
+
+input[type="search"]::-o-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+  font-size: 1.5em;
+}
+
+input[type="search"]::search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+  font-size: 1.5em;
+}
+
+.dialog-container {
+  padding: 30% 10%;
+  div.head3 {
+    text-align: justify;
+  }
+  button {
+    width: 80%;
+    margin-top: 15px;
+  }
+}

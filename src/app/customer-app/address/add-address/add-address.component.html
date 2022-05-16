@@ -1,0 +1,75 @@
+<div class="add-address-container" fxLayout="column">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="flex-start center">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+    <div class="input-area">
+      <div
+        class="search-element"
+      >
+        <input
+          class="from zat-input"
+          placeholder="{{'ADD_ADDRESS.SET_LOCATION'|translate}}"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="off"
+          type="search"
+          #searchFrom
+          required
+        />
+      </div>
+      <ng-template #customContent>
+        <div style="border-radius: 10px">
+          {{'ADD_ADDRESS.PROVIDE_DELIVERY'|translate}}
+        </div>
+      </ng-template>
+      <ng-template #counter> </ng-template>
+      <!-- <ng-template #doneButton>
+        <button mat-raised-button color="primary" (click)="onOnboardingCompletion()">Okay</button>
+      </ng-template> -->
+    </div>
+  </mat-toolbar>
+  <div class="map-area" fxFlex="1 1 100%" #mapContainer>
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [scrollwheel]="true"
+      [zoomControl]="false"
+      [streetViewControl]="false"
+      (mapReady)="mapReady($event)"
+      [zoom]="zoom"
+      [clickableIcons]="false"
+      [styles]="mapStyles"
+    >
+      <agm-marker
+        *ngIf="customerStateService.selectedLocation.from.lat"
+        [latitude]="customerStateService.selectedLocation.from.lat"
+        [longitude]="customerStateService.selectedLocation.from.lng"
+        [markerDraggable]="true"
+        [iconUrl]="'assets/icons/pin-start.svg'"
+        [animation]="'BOUNCE'"
+        (dragEnd)="setFromLatLng($event)"
+      >
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
+<div class="location-confirm">
+  <div class="head3 bold">
+    {{'ADD_ADDRESS.SELECT_DELIVERY'|translate}}
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="location" fxLayout="column" fxLayoutAlign="space-around">
+      <div class="caption">{{'ADD_ADDRESS.YOUR_LOCATION'|translate}}</div>
+      <div *ngIf="address" class="para bold">{{address.formattedAddress}}</div>
+    </div>
+    <!-- <button mat-stroked-button color="primary">CHANGE</button> -->
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button class="confirm-button" mat-raised-button color="primary" (click)="openBottomSheet()">{{'ADD_ADDRESS.CONFIRM_LOCATION'|translate}}</button>
+  </div>
+</div>
+
+<div class="overlay"></div>

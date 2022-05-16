@@ -1,0 +1,29 @@
+<div class="order-list-component">
+    <mat-toolbar fxLayout="row" fxLayoutAlign="flex-start">
+        <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+          <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+        </button>
+    </mat-toolbar>
+    <ng-container *ngIf="listItems && listItems.length else noHistory">
+      <div *ngFor="let item of listItems">
+        <mat-card *ngIf="item.orderStatus == 'Pending'" class="order-list" (click)="goOrderDetail(item.orderId)">
+          <div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="para bold order-id">{{item.orderId}}</div>
+              <div class="para">{{item.orderStatus}}</div>
+            </div>
+              <div class="para">{{item.orderDateTime.split("T", 1)}}</div>
+          </div>
+          <!-- <div *ngFor="let orderItem of item.orderData" class="helping" fxLayout="row"><p class="bold">{{orderItem.businessLocId.businessLocName}}:&nbsp;</p> <p>{{orderItem.skuId ? orderItem.skuId.skuName.en : null}}</p></div> -->
+          <div class="para" fxLayout="row" fxLayout="row" fxLayoutAlign="space-between">
+              <div class="bold">{{'TYPE'|translate}}: {{item.orderType}}</div>
+              <div>{{'TOTAL'|translate}}: ₹{{item.totalPrice}}</div>
+          </div>
+        </mat-card>
+      </div>
+    </ng-container>
+
+    <ng-template #noHistory>
+      <div class="head4">{{'ORDER.NO_ORDER_TEXT'|translate}}</div>
+    </ng-template>
+</div>

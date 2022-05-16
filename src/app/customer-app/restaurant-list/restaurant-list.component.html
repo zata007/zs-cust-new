@@ -1,0 +1,21 @@
+<div class="restaurant-container">
+  <div class="head2 bold">Restaurants Nearby</div>
+  <div fxLayout="column" class="restaurant-item-container">
+    <div *ngFor="let item of restaurantLists" fxLayout="row" fxLayoutAlign="start center" (click)="onRestaurantClick(item)" class="restaurant-item">
+      <img class="thumb mat-elevation-z4" src="https://www.ahstatic.com/photos/5555_rsr001_01_p_1024x768.jpg" alt="" />
+      <div fxLayout="column" fxLayoutAlign="center start" class="details mat-elevation-z4">
+        <div class="head4 restaurant-name">{{item.displayName}}</div>
+        <div class="restaurant para">Restaurant category</div>
+        <br />
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="other-info">
+          <div fxLayout="row" fxLayoutAlign="flex-end center" class="caption rate"><img src="../../../assets/icons/star.svg" alt=""> {{item.avgRating}}</div>
+          <div>•</div>
+          <div fxLayout="row" fxLayoutAlign="flex-start center" class="caption"><img src="../../../assets/icons/rupee.svg" alt=""> 300 for Two</div>
+          <div>•</div>
+          <div fxLayout="row" fxLayoutAlign="flex-start center" class="caption offer"><img src="../../../assets/icons/discount.svg" alt=""> 40% Off</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

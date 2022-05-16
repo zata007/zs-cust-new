@@ -1,0 +1,76 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="flex-start center">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+</mat-toolbar>
+<div *ngIf="data" class="order-detail-container" fxLayout="column">
+    <div class="head3 bold">{{data.orderId}}</div>
+    <div fxLayout="row" fxLayoutAlign="space-between flex-start">
+        <div class="item" fxLayout="column">
+            <div class="head4 bold">{{"ORDER_DATE_TIME"| translate}}</div>
+            <div class="head4">{{data.orderDateTime.split("T", 1)}}</div>
+        </div>
+        <div class="item" fxLayout="column">
+            <div class="head4 bold">{{"ORDER_TYPE"| translate}}</div>
+            <div class="head4">{{data.orderType}}</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="stepper" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="head3 bold">{{"ORDER_STATUS"| translate}}</div>
+        <div class="head3">{{data.orderStatus}}</div>
+        <div *ngIf="canShowTimer" class="waiting-status">{{ (timer/60).toFixed()  + 'min'}}</div>
+        <!-- <mat-horizontal-stepper labelPosition="bottom">
+            <mat-step label="Step 1" state="phone">
+              <p></p>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step label="Step 2" state="chat">
+              <p>Socialize with each other.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step label="Step 3">
+              <p>You're welcome.</p>
+            </mat-step>
+        </mat-horizontal-stepper> -->
+    </div>
+    <mat-divider></mat-divider>
+    <div class="merch" *ngIf="data.businessLocId">
+        <div class="head4 bold">{{"MERCHANT_DETAILS"| translate}}</div>
+        <div class="head4">{{data.businessLocId.businessLocName}}</div>
+    </div>
+    <mat-divider *ngIf="data.businessLocId"></mat-divider>
+    <div class="file" fxLayout="row" fxLayoutAlign="center center" *ngIf="data.file">
+        <button mat-stroked-button color="primary" (click)="goToFile()">{{"OPEN_ATTACH_FILE"| translate}}</button>
+    </div>
+    <mat-divider *ngIf="data.file"></mat-divider>
+    <div class="payment" fxLayout="column">
+        <div class="head4 bold">{{"PAYMENT_SUM"| translate}}</div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="para">{{"TOTAL_AMMOUNT"| translate}}</div>
+            <div class="para">{{data.totalPrice? '₹':''}}{{data.totalPrice}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="para">{{"DELIVERY_TIME"| translate}}</div>
+          <div class="para">{{data.deliveryTime|date:'d-M-y h:mm a'}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="para">{{"PAYMENT_METHOD"| translate}}</div>
+            <div class="para">{{data.paymentMode}}</div>
+        </div>
+    </div>
+
+    <div *ngIf="data.orderStatus == 'Pending' ? true : false">
+      <div class="status-btn" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="checkOrderStatus()">{{"CHECK_CURRENT_STATUS"| translate}}</button>
+      </div>
+      <div *ngIf="timer" class="timer head2 bold" fxLayout="row" fxLayout="center center">
+        <!-- <countdown #cd [config]="{leftTime: 600}" (event)="handleEvent({left: 10})"></countdown> -->
+      </div>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+<div *ngIf="!development" class="vehicle-location-container" fxLayout="column">
+  <div class="input-area">
+    <div class="search-element">
+      <input
+        class="from zat-input"
+        placeholder="Origin"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        type="search"
+        #searchFrom
+        required
+      />
+      <input
+        class="to zat-input"
+        placeholder="Destination"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        type="search"
+        #searchTo
+        required
+      />
+    </div>
+    <ng-template #customContent>
+      <div style="border-radius: 10px">Provide your route</div>
+    </ng-template>
+    <ng-template #counter> </ng-template>
+    <ng-template #doneButton>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onOnboardingCompletion()"
+      >
+        Okay
+      </button>
+    </ng-template>
+  </div>
+  <div class="map-area" fxFlex="1 1 100%" #mapContainer>
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [scrollwheel]="true"
+      [zoomControl]="false"
+      [streetViewControl]="false"
+      (mapReady)="mapReady($event)"
+      [zoom]="zoom"
+      [clickableIcons]="false"
+      [styles]="mapStyles"
+    >
+      <ng-container *ngIf="canShowDirection">
+        <agm-polyline
+          *ngFor="let polyline of polylines; let i = index"
+          (lineClick)="onPolylineClick(i)"
+          [zIndex]="polyline.zIndex"
+          [strokeColor]="polyline.color"
+        >
+          <agm-polyline-point
+            *ngFor="let point of polyline.path"
+            [latitude]="point.lat"
+            [longitude]="point.lng"
+          >
+          </agm-polyline-point>
+        </agm-polyline>
+
+        <!-- <agm-direction
+          [origin]="selectedPath.from"
+          [travelMode]="'DRIVING'"
+          [destination]="selectedPath.to"
+        ></agm-direction> -->
+      </ng-container>
+      <agm-marker
+        *ngIf="customerStateService.selectedLocation.from.lat"
+        [latitude]="customerStateService.selectedLocation.from.lat"
+        [longitude]="customerStateService.selectedLocation.from.lng"
+        [markerDraggable]="true"
+        [iconUrl]="{
+          url: 'assets/icons/car.svg',
+          scaledSize: { height: 35, width: 35 }
+        }"
+        (dragEnd)="setFromLatLng($event)"
+      >
+      </agm-marker>
+      <agm-marker
+        *ngIf="customerStateService.selectedLocation.to.lat"
+        [latitude]="customerStateService.selectedLocation.to.lat"
+        [longitude]="customerStateService.selectedLocation.to.lng"
+        [markerDraggable]="true"
+        [iconUrl]="'assets/icons/pin-end.svg'"
+        [animation]="'BOUNCE'"
+        (dragEnd)="setToLatLng($event)"
+      >
+      </agm-marker>
+
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m.label, i)"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [markerDraggable]="m.draggable"
+        [iconUrl]="'assets/icons/marker.gif'"
+      >
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
+
+<div *ngIf="!development" class="swiper-parent-container">
+  <card-slider
+    *ngIf="canShowPitstops"
+    [data]="markers"
+    (slideChange)="onSlideChange($event)"
+    [selectedIndex]="selectedIndex"
+    (itemClicked)="gotoPitstop()"
+  >
+  </card-slider>
+  <div
+    class="below-card"
+    fxlayout="column"
+    *ngIf="canShowDirection && !canShowPitstops"
+  >
+    <div fxlayout="row" fxLayoutAlign="center center" class="title">
+      <div class="head4 bold">Confirm your vehicle</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="padding10">
+      <div fxLayout="column">
+        <div class="head3 bold">WB-01-AA-2001</div>
+        <div class="caption">Tata Nexon</div>
+      </div>
+      <button mat-stroked-button color="primary">CHANGE</button>
+    </div>
+    <button
+      class="confirm-btn"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      mat-flat-button
+      color="primary"
+      (click)="onRouteSelected($event)"
+    >
+      Order
+    </button>
+  </div>
+</div>
+
+<!-- <div *ngIf="development">
+  <div class="dialog-container" fxLayout="column" fxLayoutAlign="center center">
+    <div class="head3">{{'ESSENTIAL_SERVICE.SERVICE_SUSPENDED_1'|translate}}</div>
+    <br/>
+    <div class="head3">{{'ESSENTIAL_SERVICE.SERVICE_SUSPENDED_2'|translate}}</div>
+    <button mat-raised-button color="primary" (click)="orderEssentials()">{{'ORDER_ESSENTIAL'|translate}}</button>
+  </div>
+</div> -->
+
+<!-- Swiper End -->
+<!-- <div class="overlay"></div> -->

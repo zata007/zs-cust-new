@@ -1,0 +1,27 @@
+.order-list-component {
+  padding: 60px 16px 20px;
+  height: 100%;
+  overflow-y: scroll;
+
+  mat-toolbar {
+    background: #ffffff !important;
+    box-shadow: none;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1000;
+  }
+
+  mat-card {
+    margin: 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    div {
+      .order-id {
+        color: #ff3823;
+      }
+    }
+  }
+}

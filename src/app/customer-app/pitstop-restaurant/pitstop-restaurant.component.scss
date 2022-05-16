@@ -1,0 +1,30 @@
+@import './../../../assets/styles/mixins';
+
+.pitstop-restaurant-container {
+    width: 100%;
+    padding: 0px 16px;
+
+    .input-area {
+      .zat-input {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    .scroll-item {
+      overflow: auto;
+      margin-top: 20px;
+      @include phone {
+        height: calc(100vh - 124px);
+      }
+      @include xs-phone {
+        height: calc(100vh - 120px);
+      }
+      @include tablet {
+        height: calc(100vh - 130px);
+      }
+      @include pc {
+        height: calc(100vh - 132px);
+      }
+    }
+  }

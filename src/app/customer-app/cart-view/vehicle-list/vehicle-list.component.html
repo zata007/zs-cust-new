@@ -1,0 +1,11 @@
+<div class="vehicle-list-container">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="vehicle-item" *ngFor="let vehicleItem of data">
+        <div fxLayout="column" fxLayoutAlign="start" class="vehicle">
+            <div class="head3 bold">{{vehicleItem.vehbrand}} {{vehicleItem.vehModel}}</div>
+            <div class="head4">{{vehicleItem.vehNum}}</div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <button mat-button color="primary" (click)="onSelect(vehicleItem)">SELECT</button>
+        </div>
+    </div>
+</div>

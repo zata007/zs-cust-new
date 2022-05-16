@@ -1,0 +1,45 @@
+<div class="signup-container">
+  <div class="header">
+    <div class="head1">{{'LOGIN_SIGNUP.SIGNUP_TEXT'|translate}}</div>
+  </div>
+  <div class="login-area" [formGroup]="registrationForm">
+    <!-- <div class="flex-inline">
+      <mat-icon color="primary" style="width: 35px;">account_circle</mat-icon>
+      <mat-form-field appearance="standard" style="width: calc(100% - 45px);">
+        <input matInput placeholder="Full Name" formControlName="firstName" required>
+      </mat-form-field>
+    </div> -->
+    <div class="flex-inline">
+      <mat-icon color="primary" style="width: 35px;">call</mat-icon>
+      <mat-form-field appearance="standard" style="width: calc(100% - 45px);">
+        <input matInput placeholder="{{ 'LANDING_PAGE.PHONE' | translate }}" #tooltipNum="matTooltip"
+          matTooltip="{{ 'LANDING_PAGE.MOBILE_TOOLTIP' | translate }}" (focus)="tooltipNum.show()"
+          (blur)="tooltipNum.hide()" formControlName="mobileNumber" maxlength="10" required>
+      </mat-form-field>
+    </div>
+    <div class="flex-inline">
+      <mat-icon color="primary" style="width: 35px;">email</mat-icon>
+      <mat-form-field appearance="standard" style="width: calc(100% - 45px);">
+        <input matInput #tooltip="matTooltip" matTooltip="{{ 'LANDING_PAGE.EMAIL_TOOLTIP' | translate }}" [email]="true"
+          placeholder="{{ 'LANDING_PAGE.EMAIL' | translate }}" formControlName="email" (focus)="tooltip.show()"
+          (blur)="tooltip.hide()">
+      </mat-form-field>
+    </div>
+    <div class="flex-inline">
+      <mat-icon color="primary" style="width: 35px;">local_offer</mat-icon>
+      <mat-form-field appearance="standard" style="width: calc(100% - 45px);">
+        <input matInput placeholder="{{ 'LANDING_PAGE.REFERAL_CODE' | translate }}" formControlName="referalCode">
+      </mat-form-field>
+    </div>
+    <div>
+        <mat-checkbox class="example-margin" [(ngModel)]="isAgreed" [ngModelOptions]="{standalone: true}" >{{ 'LANDING_PAGE.AGREEMENT_TEXT' | translate }}</mat-checkbox>
+        <a style="padding-left: 5px; vertical-align: bottom;" href="javascript:void(0);" (click)="gotoTerms()">{{ 'TERMS' | translate }}</a>
+      </div>
+    <!-- <mat-checkbox [(ngModel)]="isAgreed">I agree to the terms and conditions</mat-checkbox> -->
+  </div>
+  <!-- <div class="login-oauth">
+    <div class="head4">Or Login using</div>
+    <img style="width: 35px; margin-left: 10px;" src='../../../assets/img/core/facebook.svg' />
+    <img style="width: 35px; margin-left: 10px;" src='../../../assets/img/core/google-plus.svg' />
+  </div> -->
+</div>

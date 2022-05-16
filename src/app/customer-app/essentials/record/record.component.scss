@@ -1,0 +1,87 @@
+.recorder-container {
+    padding: 0px 16px;
+    height: calc(100vh - 64px);
+    overflow-y: scroll;
+    @media(max-width: 599px) {
+        height: calc(100vh - 56px);
+    }
+
+    .store {
+        margin: 5px 0px;
+        width: calc(100vw - 32px);
+        height: 30vh;
+        img {        
+            max-width: 100%;
+            max-height: 100%;
+        }
+        @media(min-width: 678px) {
+            height: 200px;
+            width: calc(100% - 32px);
+        }
+    }
+
+    .title {
+        margin-top: 10px;
+    }
+    div {
+        margin-bottom: 10px;
+    }
+    .image {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        padding: 10px;
+        img {
+            height: 70%;
+            width: auto;
+        }
+        background-color: #37aa14;
+    }
+    .clicked {
+        background-color: #ff3823;
+    }
+    audio {
+        margin: 5px;
+        margin-bottom: 15px;
+    }
+    .button {
+        width: 100%;
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+        left: 0px;
+        button {
+            width: 90%;
+            margin: 5px
+        }
+    }
+
+    .submit-text {
+        position: absolute;
+        top: 20%;
+        width: calc(100% - 32px);
+        text-align: center;
+    }
+}
+
+mat-toolbar {
+    padding: 0px;
+}
+
+mat-card {
+    border-radius: 4px;
+}
+
+.image-taken {
+    margin: 10px 0px;
+    width: calc(100vw - 32px);
+    height: 50vh;
+    img {        
+        max-width: 100%;
+        max-height: 100%;
+    }
+    @media(min-width: 678px) {
+        height: 300px;
+        width: calc(100% - 32px)
+    }
+}

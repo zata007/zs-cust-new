@@ -1,0 +1,87 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatInputModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatMenuModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatCheckbox,
+  MatCheckboxModule,
+  MatRadioModule,
+  MatGridListModule,
+  MatProgressBarModule,
+  MatTooltipModule,
+  MatRippleModule,
+  MatListModule,
+  MatBadgeModule,
+  MatBottomSheetModule
+} from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
+import { LayoutModule } from '@angular/cdk/layout';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatGridListModule,
+    MatProgressBarModule,
+    MatTooltipModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSelectModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatBadgeModule,
+    MatBottomSheetModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatGridListModule,
+    MatProgressBarModule,
+    MatTooltipModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSelectModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatBadgeModule,
+    MatBottomSheetModule
+  ],
+  declarations: [],
+})
+export class MaterialModule {}

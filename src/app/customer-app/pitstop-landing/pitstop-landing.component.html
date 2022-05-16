@@ -1,0 +1,18 @@
+<div class="item-landing-container">
+  <div class="input-area">
+    <input class="zat-input" type="text" [(ngModel)]="searchTerms" (keyup)="onSearchKeyUp(searchTerms)" placeholder="🔍 Search for your carvings">
+  </div>
+  <div class="toggle-veg" *ngIf="selectedTab === 0" fxLayout="row" fxLayoutAlign="flex-end">    
+    <p>Only Veg </p>
+    <mat-slide-toggle color="green" [checked]="defaultToggle" (change)="onToggle($event)"></mat-slide-toggle>
+  </div>
+  <mat-tab-group [(selectedIndex)]="selectedTab" (selectedTabChange)="onTabChange()">
+    <mat-tab label="Foods">
+      <app-menu-list [foods]="filteredFoods" [resName]="resName"></app-menu-list>
+      <div style="height: 100px;"></div>
+    </mat-tab>
+    <mat-tab label="Restaurants">
+      <restaurants-list [restaurantLists]="filteredRestaurants"></restaurants-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>

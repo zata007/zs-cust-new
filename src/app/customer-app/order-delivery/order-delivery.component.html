@@ -1,0 +1,114 @@
+<div *ngIf="!development" class="vehicle-location-container">
+  <div class="input-area">
+    <div class="search-element">
+      <input
+        class="from zat-input"
+        placeholder="Location"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        type="search"
+        #searchFrom
+        required
+      />
+    </div>
+    <ng-template #customContent>
+      <div style="border-radius: 10px">Provide your delivery location</div>
+    </ng-template>
+    <ng-template #counter> </ng-template>
+    <ng-template #doneButton>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onOnboardingCompletion()"
+      >
+        Okay
+      </button>
+    </ng-template>
+  </div>
+  <div class="map-area">
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [scrollwheel]="true"
+      [zoomControl]="false"
+      [streetViewControl]="false"
+      (mapReady)="mapReady($event)"
+      [zoom]="zoom"
+      [clickableIcons]="false"
+      [styles]="mapStyles"
+    >
+      <agm-marker
+        *ngIf="customerStateService.selectedLocation.from.lat"
+        [latitude]="customerStateService.selectedLocation.from.lat"
+        [longitude]="customerStateService.selectedLocation.from.lng"
+        [markerDraggable]="false"
+        [iconUrl]="'assets/icons/pin-start.svg'"
+        [animation]="'BOUNCE'"
+      >
+      </agm-marker>
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m.label, i)"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [markerDraggable]="m.draggable"
+        [iconUrl]="'assets/icons/marker.gif'"
+      >
+      </agm-marker>
+      <agm-marker
+        *ngFor="let m of addressMarkers; let i = index"
+        (markerClick)="clickedMarker(m.label)"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [iconUrl]="m.markerUrl"
+      ></agm-marker>
+    </agm-map>
+  </div>
+</div>
+
+<div *ngIf="!development" class="swiper-parent-container">
+  <div
+    class="below-card"
+    fxlayout="column"
+    *ngIf="customerStateService.selectedLocation.from.lat"
+  >
+    <div fxlayout="row" fxLayoutAlign="center center" class="title">
+      <div class="head4 bold">Confirm your Address</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="padding10">
+      <div fxLayout="column">
+        <div class="head3 bold">Torit Innovation Pvt Ltd, Santoshpur</div>
+        <div class="caption">Raipur, West Bengal</div>
+      </div>
+      <button
+        mat-stroked-button
+        color="primary"
+        fxLayout="row"
+        fxLayoutAlign="center center"
+      >
+        CHANGE
+      </button>
+    </div>
+    <button
+      class="confirm-btn"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      mat-flat-button
+      color="primary"
+      (click)="goToRestaurant()"
+    >
+      Order
+    </button>
+  </div>
+</div>
+
+<!-- <div *ngIf="development">
+  <div class="dialog-container" fxLayout="column" fxLayoutAlign="center center">
+    <div class="head3">Hi, due to COVID19 our services are temporarilly suspended, however you can order essentials goods from your near by shops</div>
+    <button mat-raised-button color="primary" (click)="orderEssentials()">Order Essentials</button>
+  </div>
+</div> -->
+
+<!-- Swiper End -->

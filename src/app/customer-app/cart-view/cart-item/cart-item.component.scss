@@ -1,0 +1,20 @@
+// 
+
+.cart-item-container {
+  padding: 0px 16px;
+  .food-name {
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    img {
+      height: 20px;
+      width: 20px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.mat-divider {
+  margin: 5px 16px !important;
+}

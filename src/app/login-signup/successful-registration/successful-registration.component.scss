@@ -1,0 +1,40 @@
+.successful-registration-container {
+  width: 100vw;
+  height: 100vh;
+  background: #444444;
+  .success-img {
+    text-align: center;
+    .mat-icon{
+      transform: scale(4.5);
+      margin-top: 178px;
+      margin-bottom: 50px;
+      color: #FFF;
+    }
+
+  }
+  .success-msg {
+    padding: 25px 20px;
+    text-align: center;
+    h3 {
+      color: #ff513f;
+      margin-bottom: 48px;
+    }
+    h4 {
+      color: #fff;
+      line-height: 28px;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+
+  .next-action{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 70px;
+    button{
+      background: #FFF;
+    }
+  }
+}

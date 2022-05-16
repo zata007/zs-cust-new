@@ -1,0 +1,14 @@
+.vehicle-list-container {
+    padding: 10px 0px;
+    div {
+        margin: 5px 0px;
+        .vehicle {
+            width: 75%;
+            div {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

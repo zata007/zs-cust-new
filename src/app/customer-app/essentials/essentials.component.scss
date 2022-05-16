@@ -1,0 +1,81 @@
+@import './../../../assets/styles/mixins';
+@import './../../../assets/styles/variable';
+
+.essentials-container {
+  box-shadow: none;
+  padding: 0px;
+  position: relative;
+  max-height: 100vh;
+
+  mat-toolbar {
+      padding: 0px;
+      .junk {
+        width: 40px;
+      }
+  }
+
+  .input-area {
+    position: relative;
+    z-index: 1;
+    top: 0px;
+    @include xs-phone{
+      width: 100vw;
+    }
+
+    .search-element {
+      position: relative;
+      background-color: $color-background-light;
+      padding: 10px;
+      width: inherit;
+      input {
+        position: relative;
+        width: 100%;
+        padding: 15px 0 15px 14px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        &:last-child{
+          margin-bottom: 0;
+        }
+
+        &:active,
+        &:focus {
+           outline: none;
+        }
+      }
+    }
+  }
+
+  agm-map {
+    height: calc(100vh - 140px);
+    z-index: 0;
+    @include pc{
+      height: calc(100vh - 150px);
+    }
+    @include tablet{
+      height: calc(100vh - 130px);
+    }
+    @include phone{
+      height: calc(100vh - 120px);
+    }
+    @include xs-phone{
+      height: calc(100vh - 115px);
+    }
+  }
+}
+
+.swiper-parent-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  .below-card {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 0px;
+    .title {
+      padding: 0px 0px 10px 0px;
+    }
+    .padding10 {
+      padding: 10px 0px;
+    }
+  }
+}

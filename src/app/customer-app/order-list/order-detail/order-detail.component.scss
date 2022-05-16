@@ -1,0 +1,18 @@
+.order-detail-container {
+    padding: 10px 16px 20px;
+    overflow-y: scroll;
+    height: 100%;
+    mat-divider {
+        margin: 10px 0px;
+    }
+    .status-btn {
+        margin: 10px 0px;
+        button {
+            width: 100%;
+        }
+    }
+}
+
+mat-toolbar {
+    padding: 0px;
+}

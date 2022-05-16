@@ -1,0 +1,40 @@
+<div style="position: relative">
+  <div *ngIf="!isOrdered" class="pitstop-view-container">
+    <div class="input-area">
+      <input class="zat-input" type="text" [(ngModel)]="searchTerms" (keyup)="onSearchKeyUp(searchTerms)" placeholder="🔍 Search for your carvings">
+    </div>
+    <div class="toggle-veg" fxLayout="row" fxLayoutAlign="flex-end">    
+      <p class="bold">Only Veg </p>
+      <mat-slide-toggle color="green" [checked]="defaultToggle" (change)="onToggle($event)"></mat-slide-toggle>
+    </div>
+    <div class="scroll-item">
+      <app-menu-list [foods]="filteredFoods" [resName]="resName"></app-menu-list>
+      <foods-landing *ngIf="!canShowPitstopLanding"></foods-landing>
+      <div style="height: 100px;"></div>
+    </div>
+  </div>
+  <!-- <div *ngIf="getTotal() > 0 && !isOrdered" class="place-order-container">
+    <button id="proceed" mat-raised-button color="primary" (click)="placeOrder()">
+      Place order ({{"₹" + getTotal()}})
+    </button>
+  </div> -->
+  <button id="proceed" mat-raised-button color="primary" *ngIf="!canShowPitstopLanding && !(getTotal() > 0 && !isOrdered)"
+    (click)="canShowPitstopLanding = true">
+    Proceed
+  </button>
+
+  <div class="completed-order" *ngIf="isOrdered" style="z-index: 999;">
+    <div class="check-icon">
+      <svg class="checkmark" width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+      </svg>
+    </div>
+    <div class="text-area">
+      <div class="text-success" style="margin-top: 25px;">Order Placed</div>
+      <div style="margin: 20px auto; font-weight: 600;">
+        Please Contact to +919594959719 / +919987483092
+      </div>
+    </div>
+  </div>
+</div>

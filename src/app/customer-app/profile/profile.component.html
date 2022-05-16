@@ -1,0 +1,108 @@
+<div class="profile-landing">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="flex-start">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div fxLayout="row" class="profile">
+    <div class="profile-img" fxLayout="row" fxLayoutAlign="center flex-start">
+      <img  src="{{basic.indPic?basic.indPic[0].thumbnail:'../../../assets/img/core/user.png'}}" alt="">
+    </div>
+    <div fxLayout="column" class="profile-detail">
+      <div class="name head3 bold">
+        {{ basic.indFirstName }}
+      </div>
+      <div class="head4 phone">{{ mobile }}</div>
+      <button mat-stroked-button color="primary" class="head4" (click)="onNavigate()">{{'EDIT'|translate}}</button>
+    </div>
+  </div>
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="head3 bold">{{'PROFILE.ACCOUNT'|translate}}</div>
+  </div>
+  <mat-card fxLayout="column" class="mat-elevation-z4">
+    <div class="profile-item" fxLayout="row" fxLayoutAlign="start center">
+      <img src="../../../assets/img/core/Mask Group 4.svg" alt="">
+      <div class="head4">{{ basic.indFirstName ? basic.indFirstName+" "+basic.indLastName : 'NAME'|translate }}</div>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="profile-item" fxLayout="row" fxLayoutAlign="start center">
+      <img src="../../../assets/img/core/Mask Group 5.svg" alt="">
+      <div class="head4">{{ mobile ? mobile: 'PROFILE.MOBILE_PLACEHOLDER'|translate }}</div>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="profile-item" fxLayout="row" fxLayoutAlign="start center">
+      <img src="../../../assets/img/core/Mask Group 6.svg" alt="">
+      <div class="head4">{{ email ? email : 'PROFILE.EMAIL_PLACEHOLDER'|translate }}</div>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="profile-item" fxLayout="row" fxLayoutAlign="start center">
+      <img src="../../../assets/img/core/Mask Group 7.svg" alt="">
+      <div class="head4">{{basic.indGender ? basic.indGender : 'PROFILE.GENDER'|translate}}</div>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="profile-item" fxLayout="row" fxLayoutAlign="start center">
+      <img src="../../../assets/img/core/Mask Group 8.svg" alt="">
+      <div class="head4">{{(basic.indFoodPref ? (basic.indFoodPref == 'v' ? 'PROFILE.VEGETARIAN': 'PROFILE.NON_VEGETARIAN') : 'PROFILE.FOOD_PREFERENCE')|translate}}</div>
+    </div>
+  </mat-card>
+
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="head3 bold">{{'ADDRESS'|translate}}</div>
+    <button mat-stroked-button color="primary" (click)="addNewAddress()">{{'ADD'|translate}}</button>
+  </div>
+  <mat-card fxLayout="column" class="mat-elevation-z4">
+    <div *ngFor="let addressItem of address" fxLayout="column" class="address-item">
+      <div fxLayout="row" fxLayoutAlign="start start" class="head4">
+        <img src="../../../assets/img/core/Mask Group 2.svg" alt="">
+        <div class="address-detail">
+          <div class="head4 bold">{{addressItem.addrType}}</div>
+          <div class="head4">{{addressItem.addrLine1}}, {{addressItem.addrLine2}}, {{addressItem.city}}</div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+        <button mat-button color="primary" (click)="editAddress(addressItem)">{{'EDIT'|translate}}</button>
+        <!-- <button mat-button color="primary">DELETE</button> -->
+      </div>
+      <mat-divider [inset]="true"></mat-divider>
+    </div>
+  </mat-card>
+
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="head3 bold">{{'VEHICLE'|translate}}</div>
+    <button mat-stroked-button color="primary" (click)="addNewVehicle()">{{'ADD'|translate}}</button>
+  </div>
+  <mat-card fxLayout="column" class="mat-elevation-z4">
+    <div *ngFor="let vehicleItem of vehicle" fxLayout="column" class="address-item">
+      <div fxLayout="row" fxLayoutAlign="start start" class="head4">
+        <img src="../../../assets/img/core/Mask Group 2.svg" alt="">
+        <div class="address-detail">
+          <div class="head4 bold">{{vehicleItem.vehbrand}} {{vehicleItem.vehModel}}</div>
+          <div class="head4">{{vehicleItem.vehNum}}</div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+        <button mat-button color="primary" (click)="editVehicle(vehicleItem)">{{'EDIT'|translate}}</button>
+        <!-- <button mat-button color="primary">DELETE</button> -->
+      </div>
+      <mat-divider [inset]="true"></mat-divider>
+    </div>
+  </mat-card>
+
+  <div class="head3 bold header">{{'PROFILE.OTHERS'|translate}}</div>
+  <mat-card fxLayout="column" class="mat-elevation-z4">
+    <div class="others-item" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">{{'PROFILE.LANG_PREFERENCE'|translate}}</div>
+      <div class="head4">{{basic.indLanPref ? basic.indLanPref: null}}</div>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="others-item" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">{{'PROFILE.APP_NOTIFICATION'|translate}}</div>
+      <mat-slide-toggle color="primary" checked="{{notification}}"></mat-slide-toggle>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div class="others-item" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">{{'PROFILE.LOC_TRACK'|translate}}</div>
+      <mat-slide-toggle color="primary"></mat-slide-toggle>
+    </div>
+  </mat-card>
+</div>

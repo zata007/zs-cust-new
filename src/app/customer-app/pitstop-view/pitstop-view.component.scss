@@ -1,0 +1,107 @@
+@import './../../../assets/styles/mixins';
+
+.pitstop-view-container {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  overflow: visible;
+  padding: 0px 16px;
+  .input-area {
+    .zat-input {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .toggle-veg {
+    margin-top: 10px;
+    p {
+      font-size: 0.8em;
+      margin-right: 5px;
+    }
+  }
+  .header {
+    margin-left: 5vw;
+    width: 95vw;
+    border-radius: 5px;
+    padding: 10px;
+    border-radius: 2px 0px 0px 2px;
+    span {
+      line-height: 1.5em;
+      width: 100%;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+      b {
+        font-weight: 800;
+      }
+    }
+  }
+  .search-area {
+    width: 95vw;
+    margin-left: 5vw;
+    margin-bottom: 20px;
+    padding: 0px 10px;
+    border-radius: 0px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    .search-field {
+      width: 100%;
+      margin: 0 auto;
+      margin-left: 10px;
+      @include phone {
+        width: 100%;
+      }
+      input {
+        border: none;
+      }
+    }
+  }
+  .scroll-item{
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    margin-top: 20px
+  }
+
+}
+
+
+
+.place-order-container {
+  position: absolute;
+  bottom: 25vh;
+  width: 100%;
+}
+
+.completed-order {
+  position: relative;
+  height: 100vh;
+  background: white;
+  .check-icon {
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(0%, -50%);
+  }
+  .text-area {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    text-align: center;
+  }
+}
+
+#proceed {
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  position: absolute;
+  bottom: 25%;
+  z-index: 1000;
+}

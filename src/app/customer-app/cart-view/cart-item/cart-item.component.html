@@ -1,0 +1,38 @@
+<!-- <div fxLayout="row nowrap" class="cart-item-container">
+  <div fxLayout="row" fxLayoutAlign="start center" class="food-item">
+    <img class="thumb mat-elevation-z4" src="{{ data.skuImages[0] ? data.skuImages[0]['thumbnail'] : '../../../assets/img/core/thumb.jpg'}}" alt="" />
+    <div fxLayout="column" fxLayoutAlign="center start" class="details mat-elevation-z4">
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div class="head4 food-name">
+          {{data.skuName}}
+          <img *ngIf="data.type==='v'; else nonVeg" src="../../../assets/icons/veg.png" alt="">
+          <ng-template #nonVeg><img src="../../../assets/icons/non-veg.png" alt=""></ng-template>
+        </div>
+      </div>
+      <div class="restaurant para">{{data.skuCuisine}}</div>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div class="price head4">₹{{ data.skuPrice }}</div>
+        <div fxLayout="row" fxLayoutAlign="space-between baseline" class="order-action">
+          <div (click)="removeUnit.emit($event)" >-</div>
+          <div class="counter">Qty: {{data.skuServes}}</div>
+          <div (click)="addUnit.emit($event)" >+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="cart-item-container" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="food-name" fxLayout="row" fxLayoutAlign="flex-start center">
+    <img *ngIf="data.type==='v'; else nonVeg" src="../../../assets/icons/veg.png" alt="">
+    <ng-template #nonVeg><img src="../../../assets/icons/non-veg.png" alt=""></ng-template>
+    <div class="para bold">{{data.skuName}}</div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between baseline" class="order-action">
+    <!-- <div (click)="removeUnit.emit($event)" >-</div> -->
+    <div class="counter para">Qty: {{data.skuServes}}</div>
+    <!-- <div (click)="addUnit.emit($event)" >+</div> -->
+  </div>
+  <div class="price para">₹{{ data.totalPrice*data.skuServes}}</div>
+</div>
+<mat-divider></mat-divider>

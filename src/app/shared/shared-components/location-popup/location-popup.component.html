@@ -1,0 +1,12 @@
+<div *ngIf="isLocationNotAllowed" class="location-popup-content-area">
+    <br>
+    <img src="assets/img/location1.png" alt="gift" width="40px" height="55px" />
+    <div class="content" [innerHTML]="'MAIN_PAGE.OFFER_NEAR_ME' | translate"></div>
+    <button mat-raised-button color="primary" (click)="gotoHelpForLocation()">{{ 'MAIN_PAGE.ENABLE' | translate }}</button>
+</div>
+<div *ngIf="!isLocationNotAllowed" class="location-popup-content-area">
+    <br>
+    <img src="assets/img/location1.png" alt="gift" width="40px" height="55px" />
+    <div class="content" [innerHTML]="'MAIN_PAGE.NEED_LOCATION_FOR_OFFER' | translate"></div>
+    <button mat-raised-button color="primary" (click)="onAllow()">{{ 'OKAY' | translate }}</button>
+</div>

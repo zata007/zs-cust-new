@@ -1,0 +1,52 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="flex-start center">
+  <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+    <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+  </button>
+  <div>{{businessName}}</div>
+</mat-toolbar>
+
+<div class="recorder-container">
+  <div *ngIf="!previewMode && !hasRecorded" class="store" fxLayout="column" fxLayoutAlign="center center">
+    <img [src]="photo" alt="">
+  </div>
+  <mat-card *ngIf="!hasRecorded && !previewMode" class="audio"  fxLayout="column" fxLayoutAlign="center center">
+    <div class="head4 bold">{{"VOICE_ORDER"| translate}}</div>
+    <div class="head4" [innerHTML]="'ESSENTIAL_SERVICE.PRESS_THE_GREEN_BTN'| translate"></div>
+    
+    <div class="image {{hasRecordingStarted ? 'clicked' : null }}" (click)="onMicClick()" fxLayout="row" fxLayoutAlign="center center">
+      <img src="{{hasRecordingStarted ?'../../../../assets/icons/stop.svg':'../../../../assets/icons/play.svg'}}" alt="">
+    </div>
+    
+    <div *ngIf="hasRecordingStarted" class="recording-remaining">{{recordingRemaining}}sec</div>
+    
+    <div *ngIf="!previewMode && !hasRecordingStarted" fxLayout="row" fxLayoutAlign="center center">
+      <button mat-stroked-button color="primary" (click)="seeSample(audio)">{{"SAMPLE_VOICE_ORDER"| translate}}</button>
+    </div>
+
+  </mat-card>
+
+  
+  <mat-card *ngIf="!previewMode && !hasRecordingStarted" class="photo" fxLayout="column" fxLayoutAlign="center center">
+    <div class="head4 bold">{{'PICTURE_ORDER'| translate}}</div>
+    <div class="head4" [innerHTML]="'ESSENTIAL_SERVICE.PRESS_THE_GREEN_BTN_PIC'| translate"></div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="image {{hasRecordingStarted ? 'clicked' : null }}" (click)="fileInput.click()">
+      <img src="../../../../assets/icons/photo.svg" alt="">
+    </div>
+    <input type='file' accept="image/*" (change)="onSelectFile($event)" #fileInput hidden>
+    <div *ngIf="!previewMode && !hasRecordingStarted" fxLayout="row" fxLayoutAlign="center center">
+      <button mat-stroked-button color="primary" (click)="seeSample(image)">{{"CHECK_SAMPLE" | translate}}</button>
+    </div>
+  </mat-card>
+  <div *ngIf="previewMode" class="button" fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="hasRecorded" class="recorded-msg">
+      <audio #recordedPlayer controls></audio>
+    </div>
+    <div *ngIf="imagePreview" class="image-taken" fxLayout="column" fxLayoutAlign="center center">
+      <img src="{{imagePreview}}" alt="">
+    </div>
+    <button mat-flat-button color="primary" (click)="onSaveClick()">{{'SEND_ORDER' | translate}}</button>
+    <button *ngIf="hasRecorded" mat-button color="primary" (click)="onCancelClick()">{{'ESSENTIAL_SERVICE.CANCEL_TO_RECORD'| translate}}</button>
+    <button *ngIf="imagePreview" mat-button color="primary" (click)="onCancelClick()">{{'ESSENTIAL_SERVICE.CANCEL_TO_SCAN'| translate}}</button>
+  </div>
+  <div *ngIf="previewMode || hasRecorded" class="head3 bold submit-text">{{'ESSENTIAL_SERVICE.SUBMIT_OR_CANCEL_ENTRY' | translate}}</div>
+</div>

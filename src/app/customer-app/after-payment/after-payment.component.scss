@@ -1,0 +1,15 @@
+.after-payment-container {
+  box-shadow: none;
+  padding: 0px;
+  position: relative;
+  max-height: 100vh;
+
+  agm-map {
+    height: calc(100vh - 200px);
+    z-index: 0;
+  }
+
+  .message {
+      padding: 10px 16px;
+  }
+}

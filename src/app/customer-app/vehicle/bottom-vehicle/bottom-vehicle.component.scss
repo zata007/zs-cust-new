@@ -1,0 +1,20 @@
+.bottom-address-container {
+    padding: 10px 0px;
+    .input-area {
+        width: 100%;
+        mat-form-field {
+          input::placeholder {
+              overflow: visible;
+          }
+        }
+    }
+
+    div button.confirm-button {
+        margin-top: 10px;
+        border-radius: 4px;
+    }
+}
+
+mat-divider {
+    margin: 10px 0px;
+}

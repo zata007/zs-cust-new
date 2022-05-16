@@ -1,0 +1,17 @@
+<div class="preorder-container">
+  <swiper *ngIf="type == 'component' && show" class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+    <div *ngFor="let food of restaurants" class="swiper-slide">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+        <mat-card class="preorder-card" (click)="onClickOverItem(food)">
+          <img mat-card-image src="https://c.ndtvimg.com/2018-10/ohqcobr_handi-biryani_625x300_08_October_18.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <div class="head3">{{food.name}}</div>
+            <p>
+              {{food.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </swiper>
+</div>

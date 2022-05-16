@@ -1,0 +1,36 @@
+<div class="bottom-address-container" fxLayout="column">
+  <div class="head3 bold">{{'ADD_ADDRESS.ENTER_LOCATION_DETAILS'|translate}}</div>
+  <mat-divider></mat-divider>
+  <div class="location-confirm" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="location" fxLayout="column" fxLayoutAlign="space-around">
+      <div class="caption">{{'ADD_ADDRESS.YOUR_LOCATION'|translate}}</div>
+      <div class="head4 bold">{{data.formattedAddress}}</div>
+    </div>
+    <button mat-stroked-button color="primary" (click)="openLink($event)">{{'CHANGE'|translate}}</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="input-area" fxLayout="column" [formGroup]="addressForm" >
+    <mat-form-field>
+      <input matInput placeholder="{{'ADD_ADDRESS.ADDRESS_LINE_1'|translate}}" (blur)="validate()" formControlName="addrLine1" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{'ADD_ADDRESS.ADDRESS_LINE_2'|translate}} ({{'OPTIONAL'|translate}})" (blur)="validate()" formControlName="addrLine2">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{'ADD_ADDRESS.LOCALITY'|translate}}" (blur)="validate()" formControlName="locality" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{'ADD_ADDRESS.LANDMARK'|translate}}" (blur)="validate()" formControlName="landmark" required>
+    </mat-form-field>
+    <label class="bold">{{'ADD_ADDRESS.LOCATION_TYPE'|translate}}</label>
+    <mat-radio-group aria-label="Location Type" (blur)="validate()" formControlName="addrType">
+      <mat-radio-button color="primary" value="Residential">{{'ADD_ADDRESS.RESIDENTIAL'|translate}}</mat-radio-button>
+      <mat-radio-button color="primary" value="work">{{'ADD_ADDRESS.WORK'|translate}}</mat-radio-button>
+      <mat-radio-button color="primary" value="other">{{'ADD_ADDRESS.OTHER'|translate}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button class="confirm-button" mat-raised-button color="primary" (click)="saveAddress()" [disabled]="!allValidate">{{'ADD_ADDRESS.SAVE_ADDRESS'|translate}}</button>
+  </div>
+</div>

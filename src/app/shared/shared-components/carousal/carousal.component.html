@@ -1,0 +1,32 @@
+  <!--Carousel Wrapper-->
+  <div class="slider-section">
+      <ul [ngSwitch]="currentIndex">
+        <li class="parent" [@onSlide]="animationState" *ngSwitchCase="0">
+            <video width="650" height="440" class="video-fluid" autoplay loop muted>
+                <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+              </video>
+        </li>
+
+        <li [@onSlide]="animationState" *ngSwitchCase="1">
+            <video width="650" height="440" class="video-fluid" autoplay loop muted>
+                <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+              </video>
+        </li>
+
+        <li [@onSlide]="animationState" *ngSwitchCase="2">
+            <video width="650" height="440" class="video-fluid" autoplay loop muted>
+                <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+              </video>
+        </li>
+      </ul>
+      <button class="leftSlide" (click)="onPrev()"><i class="shm-arrow-left"></i></button>
+      <button class="rightSlide" (click)="onNext()"><i class="shm-arrow-right"></i></button>
+      <div class="navCircle">
+        <ul>
+          <li [ngClass]="{active: currentIndex === 0 }" class="active" (click)="onClickBubble(0)"></li>
+          <li [ngClass]="{active: currentIndex === 1 }" (click)="onClickBubble(1)"></li>
+          <li [ngClass]="{active: currentIndex === 2 }" (click)="onClickBubble(2)"></li>
+        </ul>
+      </div>
+    </div>
+  <!--Carousel Wrapper-->

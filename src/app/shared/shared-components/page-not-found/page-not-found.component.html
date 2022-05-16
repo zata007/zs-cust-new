@@ -1,0 +1,17 @@
+<div class="np-page-container">
+  <img src="assets/img/core/pagenotfound.png" alt="">
+  <div *ngIf="!isNoInternet" class="contents">
+      <div class="bold-red head1">OOPS!!</div>
+      <div class="head3">The page you are looking for is missing</div>
+      <div class="head4">Error: 404</div>
+      <button class="fm-btn goto-home" (click)="gotoHome()">Take Me Home</button>
+  </div>
+  <div *ngIf="isNoInternet" class="contents">
+      <div class="bold-red head1">OOPS!!</div>
+      <div class="head3">Looks like you are disconnected from internet</div>
+      <button class="fm-btn goto-home" (click)="tryAgain()">Try Again</button>
+  </div>
+
+</div>
+
+

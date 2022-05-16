@@ -1,0 +1,166 @@
+<div class="cartview-container">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="flex-start">
+    <button mat-button color="primary" type="button" mat-icon-button (click)="onBackClick()">
+      <mat-icon aria-label="notification icon">keyboard_backspace</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="cart-items">
+    <app-cart-item *ngFor="let item of orderedItems" [data]="item" (addUnit)="onAddUnit(item)"
+      (removeUnit)="onRemoveUnit(item)" (removeItem)="removeItemFromCart(item)"></app-cart-item>
+  </div>
+  <div *ngIf="customerStateService.currentServiceSelected == ECustomerServiceType.Essential" class="essential-service" fxLayout="column" fxLayoutAlign="center center">
+    <div class="head3 bold">
+      {{'CART.ORDERING_ESSENTIALS'|translate}}
+    </div>
+    <div class="image">
+      <img src="../../../assets/icons/groceries.svg" alt="">
+    </div>
+  </div>
+
+  <!-- <div class="note">
+    <div class="note-head" fxLayout="row" fxLayoutAlign="space-between">
+      <div class="head2 bold">Note</div>
+      <div mat-button color="primary" class="head2 primary-color">Add New</div>
+    </div>
+  </div> -->
+  <div *ngIf="cartData" class="bill-detail mat-elevation-z4">
+    <div *ngIf="customerStateService.currentServiceSelected !== ECustomerServiceType.Essential" class="coupon" fxLayout="row" fxLayoutAlign="space-between center">
+      <img src="../../../assets/icons/discount.svg" alt="">
+      <mat-form-field appearance="standard">
+        <mat-label>{{'CART.APPLY_COUPON'|translate}}</mat-label>
+        <input matInput placeholder="Zataakse">
+      </mat-form-field>
+      <button mat-stroked-button color="primary">{{'APPLY'|translate}}</button>
+    </div>
+    <div [ngSwitch]="customerStateService.currentServiceSelected">
+      <div *ngSwitchCase="ECustomerServiceType.TakeAway">
+        <div class="address">
+          <div class="address-head" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="head4 bold">{{'CART.DELIVERY_AT'|translate}}</div>
+          </div>
+          <mat-card class="address-box mat-elevation-z4">
+            <div class="para bold">{{pitstopData.name}}</div>
+            <div class="para">{{pitstopData.locality}}</div>
+          </mat-card>
+          <div class="address-head" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="head4 bold">{{'VEHICLE'|translate}}</div>
+            <mat-slide-toggle color="primary" [checked]="notToProvideVehicle" (change)="notToProvideVehicle = $event.checked" ></mat-slide-toggle>
+          </div>
+          <mat-card *ngIf="selectedVehicle else addVehicleTemplate" class="address-box mat-elevation-z4">
+            <div class="para bold">{{selectedVehicle.vehbrand}} {{selectedVehicle.vehModel}}</div>
+            <div class="para">{{selectedVehicle.vehNum}}</div>
+            <!-- <div>{{matSlideTogg}}</div> -->
+            <mat-divider [inset]="true"></mat-divider>
+            <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+              <button mat-button color="primary" (click)="onVehicleChange()">{{'CHANGE'|translate}}</button>
+              <button mat-button color="primary" (click)="addVehicle()">{{'ADD'|translate}}</button>
+            </div>
+          </mat-card>
+          <ng-template #addVehicleTemplate>
+            <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+              <div class="para">{{'CART.VEHICLE_TEXT'|translate}}</div>
+            </div>
+          </ng-template>
+        </div>
+
+      </div>
+      <div *ngSwitchCase="ECustomerServiceType.Delivery">
+        <div class="address">
+          <div class="address-head" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="head4 bold">{{'CART.DELIVERY_LOCATION'|translate}}</div>
+            <!-- <div mat-button color="primary" class="head2 primary-color">Add New</div> -->
+          </div>
+          <mat-card *ngIf="selectedLocationForDelivery else addLocationTemplate" class="address-box mat-elevation-z4">
+            <div class="para bold">{{selectedLocationForDelivery.addrType}}</div>
+            <div class="para">{{selectedLocationForDelivery.addrLine1}} {{selectedLocationForDelivery.addrLine2}}
+              {{selectedLocationForDelivery.locality}} {{selectedLocationForDelivery.city}}</div>
+            <mat-divider [inset]="true"></mat-divider>
+            <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+              <button mat-button color="primary" (click)="onAddressChange()">{{'CHANGE'|translate}}</button>
+              <button mat-button color="primary" (click)="onAddAddressClick()">{{'ADD'|translate}}</button>
+            </div>
+          </mat-card>
+          <ng-template #addLocationTemplate>
+            <div fxLayout="row" fxLayoutAlign="space-around" class="address-operation">
+              <button mat-button color="primary" (click)="onAddAddressClick()">{{'CART.ADD_ADDRESS'|translate}}</button>
+            </div>
+          </ng-template>
+
+        </div>
+
+      </div>
+      <div *ngSwitchCase="ECustomerServiceType.OrderAhead">
+        <div class="address">
+          <div class="address-head" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="para bold">{{'CART.ORDER_AT'|translate}}</div>
+            <!-- <div mat-button color="primary" class="head2 primary-color">Add New</div> -->
+          </div>
+          <div *ngIf="currentRestaurantData" class="address-box mat-elevation-z4" fxLayout="row"
+            fxLayoutAlign="space-between center">
+            <div class="address-detail" fxLayout="column">
+              <div class="para bold">{{currentRestaurantData.displayName}}</div>
+              <div *ngIf="currentRestaurantData.locality" class="para">{{currentRestaurantData.locality}}</div>
+            </div>
+            <!-- <button mat-button color="primary" (click)="openTime()">ADD TIME</button> -->
+            <div fxLayout="column" class="time" fxLayoutAling="flex-end">
+              <div class="para">{{'CART.TENTATIVE_TIME'|translate}}</div>
+              <div [formGroup]="form"><input type="time" formControlName="time"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngSwitchCase="ECustomerServiceType.Essential">
+        <div class="address">
+          <div class="address-head" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="head4">{{'CART.ORDER_AT'|translate}}</div>
+            <div class="head4 bold">{{currentEssentialServiceData.displayName}}</div>
+            <!-- <div mat-button color="primary" class="head2 primary-color">Add New</div> -->
+          </div>
+          <div *ngIf="currentEssentialServiceData" class="address-box mat-elevation-z4" fxLayout="row"
+            fxLayoutAlign="space-between center">
+            <div class="address-detail" fxLayout="column">
+              <div class="para bold">{{'CART.SELECT_PAYMENT_MODE'|translate}}</div>
+              <!-- <div fxLayout="column" class="time" fxLayoutAling="flex-end">
+                <div class="para">Tentative Time</div>
+                <div [formGroup]="form"><input type="time" formControlName="time"></div>
+              </div> -->
+              <div>
+                <mat-select appearance="standard" [(value)]="essentialPaymentMode">
+                  <mat-option value="Cash On Delivery">{{'CART.COD'|translate}}</mat-option>
+                  <mat-option value="UPI / QR Code">{{'CART.UPI'|translate}}</mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <!-- <button mat-button color="primary" (click)="openTime()">ADD TIME</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="amount" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">Item Total</div>
+      <div class="head4">₹{{cartData.totalPrice}}</div>
+    </div>
+    <div class="amount" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">Applicable Taxes</div>
+      <div class="head4">₹20</div>
+    </div>
+    <div class="amount" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">Delivery Charges</div>
+      <div class="head4">₹{{cartData.deliveryCharges}}</div>
+    </div>
+    <div class="amount" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="head4">Total payable amount</div>
+      <div class="head2">₹{{cartData.paybleAmount}}</div>
+    </div> -->
+    <div *ngIf="customerStateService.currentServiceSelected !== ECustomerServiceType.Essential" fxLayout="row" class="order-button">
+      <div class="para bold" (click)="openBillDetail()">{{'CART.TOTAL_PAYBLE'|translate}}<br/><p class="price">₹{{cartData.paybleAmount}}</p><p>({{'CART.BILL_DETAILS'|translate}})</p></div>
+      <div class="head4 bold" (click)="onSubmitClick()" fxLayout="row" fxLayoutAlign="center center">{{(this.hasAuthToken ?'CART.PLACE_ORDER':'CART.LOGIN_SIGNUP')|translate}}</div>
+    </div>
+    <div *ngIf="customerStateService.currentServiceSelected == ECustomerServiceType.Essential" fxLayout="row" fxLayoutAlign="center center">
+      <button *ngIf="!loading" mat-raised-button color="primary" (click)="onSubmitClick()" style="width: 90%">{{'CART.PLACE_ORDER'|translate}}</button>
+      <button *ngIf="loading" mat-raised-button disabled style="width: 90%">Sending Order...</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="content-container">
+  <div class="swiper-container" [swiper]="config" (indexChange)="onIndexChange($event)" [index]="selectedIndex">
+    <div fxLayout="row" class="swiper-wrapper">
+      <div *ngFor="let item of data" class="swiper-slide" (click)="onItemClick(item)">
+        <div fxLayout="column" class="pitstop-container">
+          <div class="image">
+            <img src="{{item.image ? item.image : '../../../../assets/img/core/restaurant.jpg'}}" alt="">
+          </div>
+          <div fxLayout="column"fxLayoutAlign="start" class="info">
+            <div class="name head5 bold">{{item.pitstop}}</div>
+            <div class="secondary landmark">{{item.landmark}}</div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="swiper-slide" *ngFor="let item of slides">
+          <img [src]="item" width="90px" alt="">
+        </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="header">
+    <div class="head1">{{'WELCOME'|translate}}</div>
+  </div>
+  <div class="login-area">
+    <div class="flex-inline">
+        
+        <mat-form-field appearance="standard" style="width: calc(100% - 40px); font-size: 1.2em;">
+            <input #numberField placeholder="{{ 'LANDING_PAGE.PHONE' | translate }}"
+            #tooltipNum="matTooltip"
+            matTooltip="{{ 'LANDING_PAGE.MOBILE_TOOLTIP' | translate }}"
+            (focus)="tooltipNum.show()"
+            (blur)="tooltipNum.hide()"
+            maxlength="10"
+            required matInput (keyup)="numberUpdate.next(numberField.value)" >
+        </mat-form-field>
+        <mat-icon color="primary" style="width: 40px; margin-left: 10px; margin-right: 10px;">call</mat-icon>
+    </div>
+  </div>
+  <!-- <div class="login-oauth">
+    <div class="head4">Or Login using</div>
+      <img src='../../../assets/img/core/facebook.svg' />
+      <img src='../../../assets/img/core/google-plus.svg' />
+  </div> -->
+</div>

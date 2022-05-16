@@ -1,0 +1,14 @@
+<div class="add-vehicle-container">
+  <div class="head3">{{'ADD_VEHICLE.ADD_NEW_VEHICLE'|translate}}</div>
+    <mat-label>{{'ADD_VEHICLE.VEHICLE_TYPE'|translate}}</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let car of cars" [value]="car.value">
+        {{car.value}}
+      </mat-option>
+    </mat-select>
+    <input matInput type="text" placeholder="{{'ADD_VEHICLE.BRAND_PLACEHOLDER'|translate}}" required>
+    <input matInput type="text" placeholder="{{'ADD_VEHICLE.MODEL_PLACEHOLDER'|translate}}" required>
+    <input matInput type="text" placeholder="{{'ADD_VEHICLE.NUMBER_PLACEHOLDER'|translate}}" required>
+    <input matInput type="text" placeholder="{{'ADD_VEHICLE.COLOR_PLACEHOLDER'|translate}}" required>
+    <button mat-raised-button color="primary">{{'SUBMIT'|translate}}</button>
+</div>

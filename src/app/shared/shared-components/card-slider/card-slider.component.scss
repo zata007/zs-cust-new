@@ -1,0 +1,36 @@
+.content-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    .swiper-wrapper {
+      width: 100%;
+      display: flex;
+      .swiper-slide {
+        background: transparent;
+        .pitstop-container {
+          background: #fff;
+          border-radius: 5px;
+          width: 280px;
+          height: auto;
+          overflow: hidden;
+          margin: 0px 5px;          
+          margin-bottom: 30px;
+          .image {
+            width: 100%;
+            height: auto;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+          .info {
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+  }
+}

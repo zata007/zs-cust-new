@@ -1,0 +1,84 @@
+@import '../../../assets/styles/mixins';
+.pitstop-landing-container {
+  overflow-x: visible;
+  overflow-y: scroll;
+  // TODO: add mediaquery
+  height: 80vh;
+  overflow: auto;
+  padding-bottom: 10vh;
+
+
+    @include pc {
+      max-height: 71vh;
+    }
+    @include xs-phone {
+      max-height: 80vh;
+    }
+  .food-item-container {
+    margin: 5px 0px;
+    width: 100%;
+    overflow: visible;
+    .food-item {
+      overflow: visible;
+      img {
+        width: 110px;
+        height: auto;
+        border-radius: 10px;
+        z-index: 100;
+      }
+      .details {
+        width: 85%;
+        min-height: 150px;
+        border-radius: 5px;
+        margin-left: -16%;
+        padding: 10px 10px 10px 20%;
+        div {
+          .food-name {
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 7px;
+            img {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .restaurant {
+          line-height: 1.21;
+        }
+        .rate {
+          img {
+            height: 10px;
+            width: 10px;
+          }
+          p {
+            font-size: 0.8em;
+          }
+        }
+        .description {
+          color: #717171;
+          line-height: 1.21;
+          margin-bottom: 10px;
+        }
+        div {
+          width: 100%;
+          .order-action {
+            text-align: center;
+            border: 1px solid orange;
+            padding: auto 5px;
+            .counter {
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+  .thats-all {
+    border: 1px solid #666666;
+    padding-top: 10px;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    color: #555555;
+  }
+}

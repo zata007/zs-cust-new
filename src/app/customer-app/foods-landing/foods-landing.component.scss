@@ -1,0 +1,26 @@
+.food-landing-container {
+  position: relative;
+  background: #ffffff;  
+  padding-left: 16px;
+  overflow-x: hidden;
+  .img-area {
+    margin-right: 16px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  }
+  .heading {
+    display: flex;
+    flex-direction: row nowrap;
+    padding-top: 10px;
+    .image {
+      height: 18px;
+      margin-right: 10px;
+    }
+    .head2 {
+      font-weight: bold;
+    }
+  }
+}

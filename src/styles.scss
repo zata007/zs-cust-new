@@ -1,1 +1,268 @@
+@import "./assets/styles/variable";
+@import "./assets/styles/themes";
+@import "./assets/styles/mixins";
+@import "./assets/styles/loader";
+
+// @import url("https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli:400,500,600,700|Poppins:400,500,600,700&display=swap");
+
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box !important;
+  font-family: "Muli", sans-serif;
+}
+
+// input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+// input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+// /* clears the 'X' from Chrome */
+// input[type="search"]::-webkit-search-decoration,
+// input[type="search"]::-webkit-search-cancel-button,
+// input[type="search"]::-webkit-search-results-button,
+// input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+body {
+  font-size: $html-font-size-lg;
+  line-height: 23px;
+  margin: 0;
+
+  .title {
+    font-size: 16px;
+  }
+  .head1 {
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+  }
+  .head2 {
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+  }
+  .head3 {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+  }
+  .head4 {
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+  }
+  .para {
+    font-size: 16px;
+  }
+  .list-item {
+    font-size: 18px;
+  }
+  .secondary-text,
+  .caption,
+  .helping {
+    font-size: 16px;
+  }
+  button {
+    font-size: 16px;
+  }
+
+  .zat-input {
+    height: 60px;
+    background-color: #ecedee;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    border: none;
+    padding-right: 5px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .primary-color {
+    color: #ff3823;
+  }
+
+  @include pc {
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+    .title {
+      font-size: 16px;
+    }
+    .head1 {
+      font-size: 24px;
+    }
+    .head2 {
+      font-size: 22px;
+    }
+    .head3 {
+      font-size: 20px;
+    }
+    .head4 {
+      font-size: 18px;
+    }
+    .para {
+      font-size: 16px;
+    }
+    .list-item {
+      font-size: 18px;
+    }
+    .secondary-text,
+    .caption,
+    .helping,
+    .ham-menu {
+      font-size: 16px;
+    }
+    button {
+      font-size: 16px;
+    }
+    .zat-input {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+
+  @include tablet {
+    .title {
+      font-size: 14px;
+    }
+    .head1 {
+      font-size: 24px;
+    }
+    .head2 {
+      font-size: 22px;
+    }
+    .head3 {
+      font-size: 20px;
+    }
+    .head4 {
+      font-size: 18px;
+    }
+    .para {
+      font-size: 14px;
+    }
+    .list-item {
+      font-size: 16px;
+    }
+    .secondary-text,
+    .caption,
+    .helping,
+    .ham-menu {
+      font-size: 14px;
+    }
+    button {
+      font-size: 14px;
+    }
+    .zat-input {
+      height: 48px;
+      font-size: 18px;
+    }
+  }
+
+  @include phone {
+    .title {
+      font-size: 14px;
+    }
+    .head1 {
+      font-size: 22px;
+    }
+    .head2 {
+      font-size: 20px;
+    }
+    .head3 {
+      font-size: 18px;
+    }
+    .head4 {
+      font-size: 16px;
+    }
+    .para {
+      font-size: 14px;
+    }
+    .list-item {
+      font-size: 16px;
+    }
+    .secondary-text,
+    .caption,
+    .helping,
+    .ham-menu {
+      font-size: 14px;
+    }
+    button {
+      font-size: 14px;
+    }
+    .zat-input {
+      height: 42px;
+      font-size: 16px;
+    }
+  }
+
+  @include xs-phone {
+    .title {
+      font-size: 13px;
+    }
+    .head1 {
+      font-size: 20px;
+    }
+    .head2 {
+      font-size: 18px;
+    }
+    .head3 {
+      font-size: 16px;
+    }
+    .head4 {
+      font-size: 14px;
+    }
+    .para {
+      font-size: 13px;
+    }
+    .list-item {
+      font-size: 15px;
+    }
+    .secondary-text,
+    .caption,
+    .helping,
+    .ham-menu {
+      font-size: 13px;
+    }
+    button {
+      font-size: 13px;
+    }
+    .zat-input {
+      height: 38px;
+      font-size: 14px;
+    }
+  }
+}
+
+//------------------------------------Bottom-Sheet styles-----------------------------------------------//
+.mat-bottom-sheet-container {
+  border-top-left-radius: 26px;
+  border-top-right-radius: 26px;
+}
+
+//---------------------------------- Cross Btn ------------------------------------------------------
+
+.cross {
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+// ----------------------------------Material --------------------------------------------------------
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.mat-tab-nav-bar,
+.mat-tab-header {
+  border-bottom: none !important;
+}
+
+.mat-input-element,
+.mat-select {
+  min-height: 24px;
+}

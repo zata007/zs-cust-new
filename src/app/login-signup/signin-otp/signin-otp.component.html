@@ -1,0 +1,32 @@
+<div class="signin-otp">
+    <div class="header">
+        <div class="head3">{{getHeaderText()|translate}}</div>
+        <mat-icon mat-icon-button (click)="onClose()">close</mat-icon>
+      </div>
+  <ng-container *ngIf="isOtp">
+    <mat-form-field class="input-container" appearance="outline">
+      <mat-label>{{'LOGIN_SIGNUP.OTP'|translate}}</mat-label>
+      <input matInput [(ngModel)]="otp" placeholder="{{'LOGIN_SIGNUP.ENTER_OTP'|translate}}" />
+    </mat-form-field>
+    <div class="actions">
+      <button mat-raised-button color="primary" class="action-btn-started" (click)="verifyOtp()">{{'PROCEED'|translate}}</button>
+      <div class="resend-otp" (click)="resendOTP()">{{'LOGIN_SIGNUP.RESEND_OTP'|translate}}</div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isNotRegistered">
+    <div class="head4 msg">
+      {{'LOGIN_SIGNUP.NOT_REGISTERED_TEXT'|translate}}
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" class="action-btn-started" (click)="gotoSignup()">{{'PROCEED'|translate}}</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isAlreadyRegistered">
+    <div class="head4 msg">
+      {{'LOGIN_SIGNUP.ALREADY_REGISTERED_TEXT'|translate}}
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" class="action-btn-started" (click)="gotoLogin()">{{'SIGNIN'|translate}}</button>
+    </div>
+  </ng-container>
+</div>

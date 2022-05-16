@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900&display=swap');
+
+@import '~@angular/material/theming';
+////////////////////////////////////////////////////////////////////
+// zataakse (138 lines)
+////////////////////////////////////////////////////////////////////
+
+$zataakse-typography: mat-typography-config(
+  $font-family: '"Merriweather", serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 600),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 600),
+  $headline: mat-typography-level(24px, 32px, 600),
+  $title: mat-typography-level(20px, 32px, 600),
+  $subheading-2: mat-typography-level(16px, 22px, 600),
+  $subheading-1: mat-typography-level(15px, 24px, 600),
+  $body-2: mat-typography-level(14px, 24px, 600),
+  $body-1: mat-typography-level(14px, 30px, 600),
+  $caption: mat-typography-level(12px, 20px, 600),
+  $button: mat-typography-level(10px, 14px, 800),
+  // Line-height must be unit-less fraction of the font-size. $input: mat-typography-level(inherit, 1.125, 400),
+);
+
+$zataakse-primary-color: (
+  50 : #ffe7e5,
+  100 : #ffc3bd,
+  200 : #ff9c91,
+  300 : #ff7465,
+  400 : #ff5644,
+  500 : #ff3823,
+  600 : #ff321f,
+  700 : #ff2b1a,
+  800 : #ff2415,
+  900 : #ff170c,
+  A100 : #ffffff,
+  A200 : #fff6f6,
+  A400 : #ffc5c3,
+  A700 : #ffaca9,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+
+$zataakse-theme: mat-light-theme(mat-palette($zataakse-primary-color), mat-palette($mat-green), mat-palette($mat-red));
+
+.zataakse {
+  @include angular-material-theme($zataakse-theme);
+  // @include angular-material-typography($zataakse-typography);
+
+  $background: mat-color($zataakse-primary-color, 50);
+  $primary: mat-color($zataakse-primary-color, 500);
+  $accent: mat-color($mat-green, 500);
+  $warn: mat-color($mat-red, 500);
+
+  main {
+    background-color: $background;
+  }
+
+  // override native angular-material classes here:
+  .mat-raised-button,
+  .mat-button {
+    border-radius: 10px;
+  }
+
+  .mat-raised-button {
+    @include mat-elevation(5);
+  }
+
+  .mat-raised-button.back {
+    color: $light-primary-text;
+    background-color: mat-color($mat-grey, A700);
+  }
+
+  .mat-fab {
+    &.mat-accent {
+      margin: 15px;
+    }
+  }
+
+  .snack-container {
+    .mat-card {
+      margin: 10px 10px 0 10px;
+      border-radius: 4px;
+      box-shadow: none;
+    }
+  }
+
+  // .mat-checkbox.mat-checkbox-checked {
+  //   color: $light-primary-text;
+  //   background-color: $accent;
+  // }
+  // .mat-checkbox .mat-checkbox-inner-container {
+  //   display: none;
+  // }
+  // .mat-checkbox {
+  //   color: $light-primary-text;
+  //   background-color: $primary;
+  //   border-radius: 19px;
+  //   box-sizing: border-box;
+  //   position: relative;
+  //   -webkit-user-select: none;
+  //   -moz-user-select: none;
+  //   -ms-user-select: none;
+  //   user-select: none;
+  //   cursor: pointer;
+  //   outline: 0;
+  //   border: none;
+  //   -webkit-tap-highlight-color: transparent;
+  //   display: inline-block;
+  //   white-space: nowrap;
+  //   text-decoration: none;
+  //   vertical-align: baseline;
+  //   text-align: center;
+  //   margin: 0;
+  //       margin-right: 0px;
+  //       margin-bottom: 0px;
+  //   min-width: 88px;
+  //   line-height: 36px;
+  //   padding: 0 16px;
+  //   overflow: visible;
+  // }
+  .mat-card {
+    margin: 10px 0px;
+    border-radius: 4px;
+  }
+  .mat-card.mat-card-accent {
+    background-color: $accent;
+    color: $dark-primary-text;
+  }
+  .mat-card.mat-card-warn {
+    background-color: $warn;
+    color: $light-primary-text;
+  }
+
+  // Override nav bar
+  // #nav-bottom, .nav-top {
+  //   background: $primary;
+  // }
+
+  // Override loader color
+  .loader-container{
+    .ball-loader-ball{
+      background-color :$primary !important;
+    }
+  }
+
+  .mat-toolbar {
+    background-color: rgba(0,0,0,0)!important;
+  }
+}

@@ -1,0 +1,27 @@
+.nav-top {
+  width: 100%;
+  padding: 10px 20px;
+  min-height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  color: #ffffff;
+  z-index: 1;
+  mat-icon {
+      color: #ffffff;
+  }
+  p{
+      color: #ffffff;
+  }
+  div{
+    &:active{
+    padding: 5px 20px;
+    background: #3D8AF7;
+    border-radius: 25px;
+    }
+  }
+}

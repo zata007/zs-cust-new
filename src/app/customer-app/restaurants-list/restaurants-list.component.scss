@@ -1,0 +1,70 @@
+@import '../../../assets/styles/mixins';
+.restaurant-container {
+  .head2 {
+    text-align: center;
+    margin: 20px auto;
+  }
+  .restaurant-item-container {
+    overflow: visible;
+    overflow-y: scroll;
+    height: 80vh;
+    overflow: auto;
+
+
+      @include pc {
+        max-height: 71vh;
+      }
+      @include xs-phone {
+        max-height: 80vh;
+      }
+    .restaurant-item {
+      margin: 5px auto;
+      width: 100%;
+      img {
+        width: 110px;
+        height: auto;
+        border-radius: 10px;
+      }
+      .details {
+        width: 85%;
+        min-height: 120px;
+        border-radius: 5px;
+        margin-left: -20%;
+        padding-top: 10px;
+        padding-left: 23%;
+        padding-right: 10px;
+        .restaurant-name {
+          font-weight: bold;
+          line-height: 1.5;
+        }
+        .restaurant {
+          line-height: 1.21;
+        }
+        .distance {
+          font-size: 0.7em;
+        }
+        .other-info {
+          width: 100%;
+          .caption {
+            font-size: 0.6rem;
+          }
+          .rate, .offer, .caption {
+            img {
+              height: 13px;
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+    .thats-all {
+      border: 1px solid #666666;
+      padding-top: 10px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      color: #555555;
+      width: 100%;
+    }
+  }
+}

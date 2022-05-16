@@ -1,0 +1,45 @@
+.restaurant-container {
+  padding-bottom: 30px;
+  .head2 {
+    text-align: center;
+    margin: 20px auto;
+  }
+  .restaurant-item-container {
+    overflow: visible;
+    .restaurant-item {
+      margin: 5px auto;
+      img {
+        width: 110px;
+        height: auto;
+        border-radius: 10px;
+      }
+      .details {
+        width: 85%;
+        height: 120px;
+        border-radius: 5px;
+        margin-left: -20%;
+        padding-left: 23%;
+        padding-right: 10px;
+        .restaurant-name {
+          font-weight: bold;
+          line-height: 1.5;
+        }
+        .restaurant {
+          line-height: 1.21;
+        }
+        .other-info {
+          width: 100%;
+          .caption {
+            font-size: 0.7rem;
+          }
+          .rate, .offer, .caption {
+            img {
+              height: 13px;
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
