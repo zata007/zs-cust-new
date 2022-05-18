@@ -1,0 +1,72 @@
+<ng-template id="bottom2" #requestSubmit>
+  <div fxlayout="column">
+    <div class="head2 bold heading">{{'NOT_SERVICEBLE.RECOMMEND_MERCH'|translate}}</div>
+    <div class="para">{{'NOT_SERVICEBLE.RECOMMEND_TEXT'|translate}}</div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-between stretch">
+    <div fxLayout="row" fxLayoutAlign="start baseline" class="flex-inline" style="margin-bottom: -20px;">
+      <mat-form-field appearance="standard" style="width: 100%;">
+        <mat-icon matPrefix style="width: 35px;">business</mat-icon>
+        <mat-label>{{(data.name == "shop" ? 'SHOP' : 'RESTAURANT')|translate}} {{'NAME'|translate}}</mat-label>
+        <input matInput [(ngModel)]="restaurantData.name"  required>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start baseline" class="flex-inline" style="margin-bottom: -20px;">
+      <mat-form-field appearance="standard" style="width: 100%;">
+        <mat-label>{{(data.name == "shop" ? 'SHOP' : 'RESTAURANT')|translate}} {{'CONTACT'|translate}}</mat-label>
+        <mat-icon matPrefix style="width: 35px;">call</mat-icon>
+        <input matInput [(ngModel)]="restaurantData.contact"  required>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start" class="flex-inline">
+      <mat-form-field appearance="standard" style="width: 100%;">
+        <mat-label>{{(data.name == "shop" ? 'SHOP' : 'RESTAURANT')|translate}} {{'ADDRESS'|translate}}</mat-label>
+        <mat-icon matPrefix style="width: 35px;">near_me</mat-icon>
+        <input matInput [(ngModel)]="restaurantData.address" >
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="action-btn" (click)="mailMe()">
+      {{'NOT_SERVICEBLE.REQUEST'|translate}}
+    </button>
+  </div>
+</ng-template>
+<div>
+  <ng-container class="bottom1" *ngIf="!isSubmitRequestVisible; else requestSubmit">
+    <div *ngIf="message">
+      <div fxLayout="column" fxLayoutAlign="space-between stretch" class="content-area" style="padding: 20px;">
+        <div fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap.xs="10px">
+          <div class="head4 bold">
+            {{'NOT_SERVICEBLE.NO_SERVICE'|translate}}
+          </div>
+          <div class="para">
+            <mat-icon>near_me</mat-icon> {{location}}
+          </div>
+          <br />
+          <div class="head4" style="text-align: center;">
+           {{(data.name == "shop" ? 'NOT_SERVICEBLE.RECOMMEND_SHOP_TEXT' : 'NOT_SERVICEBLE.RECOMMEND_MERCH_TEXT')|translate}}?
+          </div>
+        </div>
+        <br />
+        <button mat-raised-button color="primary" (click)="then()">
+          {{'PROCEED'|translate}}
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!message">
+      <div fxLayout="column" fxLayoutAlign="space-between stretch" class="content-area" style="padding: 20px;">
+        <div fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap.xs="10px">
+          <div class="head4 bold">
+            {{'NOT_SERVICEBLE.CHANGE_LOCATION'|translate}}
+          </div>
+          <div class="head4">
+            {{'NOT_SERVICEBLE.CHANGE_LOCATION_TEXT'|translate}}
+          </div>
+        </div>
+        <br />
+        <button mat-raised-button color="primary" (click)="proceed()">
+          {{'RECOMMEND'|translate}}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,32 @@
+<div class="login-signup-container">
+  <div class="bg-illustration">
+    <img src="assets/img/core/cornerIllustration.png" alt="">
+  </div>
+  <mat-card matRipple class="slider-content-container mat-elevation-z8">
+    <br>
+    <div class="component-container" [ngClass]="{ selected: selected === ELoginSignup.Login }">
+        <app-login (numberUpdate)="onLoginNumberUpdate($event)"></app-login>
+    </div>
+    <div class="component-container" [ngClass]="{ selected: selected === ELoginSignup.Signup }">
+        <app-signup (dataChange)="onSignupDataChange($event)"></app-signup>
+    </div>
+  </mat-card>
+  <div class="slide-action-btn">
+      <button mat-raised-button color="primary" class="action-btn-started" (click)="onSubmitButtonClick()" aria-label="Goto">
+        <span>{{'PROCEED'|translate}}</span>
+        <mat-icon mat-icon-button>arrow_forward</mat-icon>
+      </button>
+    </div>
+  <div class="slider">
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button mont" (click)="onPanelSelect(ELoginSignup.Signup)" [ngClass]="{ 'slide-button-select': selected === ELoginSignup.Signup }">{{'SIGNUP'|translate}}</div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button mont" (click)="onPanelSelect(ELoginSignup.Login)" [ngClass]="{ 'slide-button-select': selected === ELoginSignup.Login }">{{'SIGNIN'|translate}}</div>
+      </div>
+    </div>
+  </div>
+</div>

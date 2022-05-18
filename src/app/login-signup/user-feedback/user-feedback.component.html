@@ -1,0 +1,127 @@
+<div class="user-feedback-container slider-main-container">
+  <mat-card matRipple *ngIf="selectedPanel !== 'lastQuestion'" class="slider-content-container mat-elevation-z8" >
+    <div class="bg-illustration">
+      <img src="assets/img/core/form details.png" alt="" />
+    </div>
+    <div class="header">
+      <div class="head3">Help us<br />To serve you</div>
+    </div>
+    <div class="question-set">
+      <ng-container [ngSwitch]="selectedPanel">
+        <ng-container *ngSwitchDefault>
+          <label class="question-label">{{
+            currentQuestion | translate
+          }}</label>
+          <mat-radio-group class="question-option-radio-group" [(ngModel)]="selectedAnswer">
+            <mat-radio-button (change)="radioChange($event)" class="options" *ngFor="let option of currentOptions"
+              [value]="option.value">
+              {{ option.label | translate }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </ng-container>
+        <div class="action-btns">
+          <ng-container *ngIf="index < 5; else lastButtons">
+            <div class="navigation-btns" style="margin-bottom: 40px">
+              <div class="left">
+                <button *ngIf="index > 0" matTooltip="Goto previous question." mat-fab color="primary"
+                  style="margin-left: 10px" (click)="onPrev()">
+                  <mat-icon [inline]="true" style="font-size:50px;">chevron_left</mat-icon>
+                </button>
+              </div>
+              <div class="right">
+                <button *ngIf="index < 5" matTooltip="Goto next question" mat-fab color="primary"
+                  style="align-self: flex-end; margin-right: 10px" (click)="onNext()">
+                  <mat-icon [inline]="true" style="font-size:50px;">chevron_right</mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <ng-container *ngSwitchCase="'afterOtpValidation'" #afterOtpValidation>
+          <div class="check-icon">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+              <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+          </div>
+          <div class="text-success">
+            {{ "SNACK_PAGE.CONGRATS_REGISTRATION" | translate }}
+          </div>
+          <div style="margin: 20px auto; text-align: center; font-weight: 600;"
+            [innerHTML]="'SNACK_PAGE.EMAILED_COUPAN_CODE' | translate"></div>
+        </ng-container>
+      </ng-container>
+        <ng-template #lastButtons>
+          <div class="navigation-btns">
+            <button *ngIf="isCompleted" mat-raised-button color="primary" class="verify-submit proceed"
+              (click)="gotoHome()">
+              {{ "NEXT" | translate }}
+            </button>
+            <button *ngIf="!isCompleted" mat-raised-button color="primary" class="verify-submit verify"
+              (click)="onVerify()">
+              {{ "VERIFY" | translate }}
+            </button>
+          </div>
+        </ng-template>
+    </div>
+  </mat-card>
+
+  <mat-card matRipple *ngIf="selectedPanel === 'lastQuestion'" class="slider-content-container mat-elevation-z8">
+    <div class="header">
+      <div class="head3">Let's Verify<br />The OTP</div>
+      <div class="head4">Please fill out the OTP recieved</div>
+    </div>
+    <ng-container #lastQuestion>
+      <div>
+        <mat-form-field style="width:100%; font-size: 2.5vh;">
+          <input matInput placeholder="Mobile OTP" [(ngModel)]="mobileOTP" required />
+        </mat-form-field>
+
+        <div class="resend-otp" (click)="resendOTP($event)">
+          <b>{{ "RESEND_OTP" | translate }}</b>
+        </div>
+      </div>
+    </ng-container>
+  </mat-card>
+
+  <div *ngIf="selectedPanel === 'lastQuestion'" class="slide-action-btn">
+    <button mat-raised-button color="primary" class="action-btn-started" (click)="onVerify()" aria-label="Goto">
+      <span>Proceed</span>
+      <mat-icon mat-icon-button>arrow_forward</mat-icon>
+    </button>
+  </div>
+
+  <div class="slider">
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 0 }"></div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 1 }"></div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 2 }"></div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 3 }"></div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 4 }"></div>
+      </div>
+    </div>
+    <div class="slide-button-parent-container">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': index === 5 }"></div>
+      </div>
+    </div>
+  </div>
+</div>

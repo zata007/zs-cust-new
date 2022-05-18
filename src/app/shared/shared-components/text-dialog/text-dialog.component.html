@@ -1,0 +1,4 @@
+<div mat-dialog-content class="head3">{{data.msg}}</div>
+<div *ngIf="data.from == 'order-cart'" mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  <button mat-stroked-button color="primary" (click)="onNoClick()">Okay</button>
+</div>

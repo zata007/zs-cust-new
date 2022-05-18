@@ -1,0 +1,65 @@
+<app-splash-screen></app-splash-screen>
+
+<div class="zataakse-slider-container">
+  <div class="skip" fxLayout="row" fxLayoutAlign="flex-end center">
+    <button class="head4 order-btn" mat-button (click)="onSubmitButtonClick()">
+      {{'LANDING_PAGE.ORDER_NOW'|translate}}
+      <mat-icon color="primary">arrow_forward</mat-icon>
+    </button>
+  </div>
+
+  <mat-card matRipple class="slider-content-container mat-elevation-z8" (swipe)="onSwipe($event)">
+    <div class="img-container" [ngClass]="{ selected: 0 == selectedIndex }">
+      <img [src]="data[0].img" alt="{{ data[0].alt }}" />
+      <div class="text-content">
+        <div class="head4" [innerHTML]="data[0].text | translate"></div>
+      </div>
+    </div>
+    <div class="img-container" [ngClass]="{ selected: 1 == selectedIndex }">
+      <img [src]="data[1].img" alt="{{ data[1].alt }}" />
+      <div class="text-content">
+        <div class="head4" [innerHTML]="data[1].text | translate"></div>
+      </div>
+    </div>
+    <div class="img-container" [ngClass]="{ selected: 2 == selectedIndex }">
+      <img [src]="data[2].img" alt="{{ data[2].alt }}" />
+      <div class="text-content">
+        <div class="head4" [innerHTML]="data[2].text | translate"></div>
+      </div>
+    </div>
+    <div class="img-container" [ngClass]="{ selected: 3 == selectedIndex }">
+      <img class="gift" [src]="'assets/img/core/waiting-in-line.jpeg'" alt="{{ data[3].alt }}" />
+      <div class="text-content">
+        <div class="head4" [innerHTML]="data[3].text | translate"></div>
+        <!-- <div class="aditional-txt" [innerHTML]="'MAIN_PAGE.CAROUSAL_MSG_3' | translate"></div> -->
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="slider">
+    <div class="slide-button-parent-container" *ngFor="let i of data; let x = index" (click)="selected(x)"
+      (keypress)="keySelected(x)">
+      <div class="select-box">
+        <div class="slide-button" [ngClass]="{ 'slide-button-select': x == selectedIndex }"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="canShowLanguagePanel" class="language-container">
+  <div class="language-content" fxLayout="column" fxLayoutAlign="space-between none">
+    <div class="head3 lang-text">{{'MAIN_PAGE.SELECT_LANGUAGE'| translate}}</div>
+
+    <mat-select #lanSelector placeholder="Select Language" (selectionChange)="onLanguageChange($event.value)">
+      <mat-option value="en">English - अंग्रेज़ी</mat-option>
+      <mat-option value="hi">Hindi - हिन्दी</mat-option>
+      <mat-option value="mr">Marathi - मराठी</mat-option>
+      <mat-option value="bn">Bengali - বাংলা</mat-option>
+    </mat-select>
+    <br>
+    <br>
+    <button mat-button (click)="onLanguageSelected(lanSelector.value)">{{'MAIN_PAGE.GET_STARTED' | translate}}</button>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div matRipple class="successful-registration-container">
+  <div class="success-img">
+    <!-- <img src="../../../assets/img/checked.svg" width="150px"> -->
+    <mat-icon svgIcon="success_check"></mat-icon>
+  </div>
+  <div class="success-msg">
+    <div class="head3">Congratulations</div>
+    <div class="head4">
+      Your coupon is mailed to you, refer to your friends and families to get
+      more vouchers
+    </div>
+  </div>
+  <div class="next-action">
+    <button
+      mat-raised-button
+      color="primary"
+      class="action-btn-started"
+      (click)="onSubmitButtonClick()"
+      aria-label="Goto"
+    >
+      <span>Start Ordering</span>
+      <mat-icon mat-icon-button>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>

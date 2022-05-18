@@ -1,0 +1,31 @@
+.signup-container {
+    margin: 40px 15px;
+    .header {
+        margin-bottom: 25px;
+        h1 {
+            font-size: 24px;
+            font-weight:800;
+        }
+    }
+    .login-area {
+        .flex-inline {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: -30px;
+        }
+        mat-checkbox {
+            margin-left:5px;
+        }
+    }
+    .login-oauth {
+        margin-top: 25px;
+        @media screen and (max-height: 580px){
+            display: none;            
+        }
+        h4 {
+            margin-bottom: 20px;
+        }
+    }
+}
